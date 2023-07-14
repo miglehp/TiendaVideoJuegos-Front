@@ -13,11 +13,11 @@ import { UpdateFormComponent } from './pages/update-form/update-form.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'userProfile', component: UserProfileComponent },
-  { path: 'gameDetail', component: GameDetailComponent },
+  { path: 'gameDetail/:gameId', component: GameDetailComponent },
   { path: 'gameList', component: GameListComponent },
   { path: 'basketPage', component: BasketPageComponent },
   { path: 'orderList', component: OrderListComponent },
-  { path: 'orderDetail', component: OrderDetailComponent },
+  { path: 'orderDetail/:orderId', component: OrderDetailComponent },
   { path: 'createForm', component: CreateFormComponent },
   { path: 'updateForm', component: UpdateFormComponent }
 ];
