@@ -1,0 +1,21 @@
+export interface Game {
+    id: number,
+    steam_id: number,
+    detailed_description: string,
+    about_the_game: string,
+    short_description: string,
+    header_image: string,
+    capsule_image: string,
+    capsule_imagev5: string,
+    website: string,
+    pc_requirements_minimum: string,
+    pc_requirements_recommended: string,
+    mac_requirements: string,
+    linux_requirements: string,
+    developers: string,
+    publishers: string,
+    price: number,
+    release_date: string,
+    support_info_url: string,
+    support_info_email: string
+}
