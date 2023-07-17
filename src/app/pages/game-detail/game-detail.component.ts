@@ -21,12 +21,15 @@ export class GameDetailComponent {
   constructor() {
 
     this.games = [];
+   
   }
 
-  ngOnInit(){
+  ngOnInit() {
+    this.activatedRoute.params.subscribe(params => {
 
-    
+      this.game = this.gamesService.getById(parseInt(params['gameId']));
 
+    });
   }
 
 }
