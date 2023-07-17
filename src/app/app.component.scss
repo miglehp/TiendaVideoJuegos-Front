@@ -1,5 +1,10 @@
 @import '../variables.scss';
 
+header {
+    background-color: $background-light-2;
+    border-bottom: 2px solid $primary-color-light;
+}
+
 .header-main{
     min-height: calc(100vh - 50px);
 }
