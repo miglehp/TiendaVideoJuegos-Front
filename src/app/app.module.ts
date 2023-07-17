@@ -15,6 +15,8 @@ import { OrderListComponent } from './pages/order-list/order-list.component';
 import { OrderDetailComponent } from './pages/order-detail/order-detail.component';
 import { CreateFormComponent } from './pages/create-form/create-form.component';
 import { UpdateFormComponent } from './pages/update-form/update-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,11 +32,14 @@ import { UpdateFormComponent } from './pages/update-form/update-form.component';
     OrderListComponent,
     OrderDetailComponent,
     CreateFormComponent,
-    UpdateFormComponent
+    UpdateFormComponent,
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,1 +1,24 @@
-<p>create-form works!</p>
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input type="text" class="form-control" formControlName="username">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" formControlName="password">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="text" class="form-control" formControlName="email">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Fecha de nacimiento</label>
+        <input type="date" class="form-control" formControlName="fecha_nacimiento">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Foto de perfil</label>
+        <input type="text" class="form-control" formControlName="foto_perfil">
+    </div>
+    
+    <input type="submit" value="Enviar" class="btn btn-info">
+</form>
