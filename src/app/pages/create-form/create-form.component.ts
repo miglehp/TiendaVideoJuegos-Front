@@ -11,41 +11,50 @@ import { UserService } from 'src/app/services/user.service';
 export class CreateFormComponent {
 
   formulario: FormGroup;
+  
 
   userService = inject(UserService);
   router = inject(Router);
   
   constructor(){
+    
     this.formulario = new FormGroup({
   username: new FormControl(null, [
     Validators.required,
     Validators.minLength(3)
   ]),
   password: new FormControl(null, [
+    Validators.required,
     Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)
   ]),
   email: new FormControl(null, [
+    Validators.required,
     Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,10}$/)
   ]),
   fecha_nacimiento: new FormControl(null, [
     Validators.required
   ]),
-  foto_perfil: new FormControl(null, [
-    Validators.required
-  ])
+  foto_perfil: new FormControl()
 })
   }
+ngOnInit(){
+  
+}
+
   async onSubmit(){
     const response = await this.userService.create(this.formulario.value)
 
-    if (response.fatal) {
+    /* if (response.fatal) {
       // Error en la inserción
     
       return alert('Error en la inserción.');
     }
 
     // Inserción correcta
-    this.router.navigate(['/user']);
+    this.router.navigate(['/user']); */
   
+  }
+  checkError(field: string, error: string) {
+    return this.formulario.get(field)?.hasError(error) && this.formulario.get(field)?.touched;
   }
 };
