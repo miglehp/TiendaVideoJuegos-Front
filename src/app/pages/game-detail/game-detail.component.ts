@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Game } from 'src/app/interfaces/game.interface';
+import { GameService } from 'src/app/services/game.service';
 
 @Component({
   selector: 'app-game-detail',
@@ -6,5 +9,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./game-detail.component.scss']
 })
 export class GameDetailComponent {
+
+  game: Game | undefined;
+  games: Game[];
+
+  //servicios
+  activatedRoute = inject(ActivatedRoute);
+  private gamesService = inject(GameService);
+  
+
+  constructor() {
+
+    this.games = [];
+  }
+
+  ngOnInit(){
+
+    
+
+  }
 
 }

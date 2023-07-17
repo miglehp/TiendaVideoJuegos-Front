@@ -1,6 +1,7 @@
 export interface Game {
     id: number,
     steam_id: number,
+    name: string,
     detailed_description: string,
     about_the_game: string,
     short_description: string,
