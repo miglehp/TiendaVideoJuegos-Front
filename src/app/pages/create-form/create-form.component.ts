@@ -45,6 +45,8 @@ ngOnInit(){
 onClick() {
   const response = this.userService.create(this.formulario.value)
 
+  this.router.navigate(['/userProfile'])
+
 }
   checkError(field: string, error: string) {
     return this.formulario.get(field)?.hasError(error) && this.formulario.get(field)?.touched;
