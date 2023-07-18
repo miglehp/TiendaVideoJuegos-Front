@@ -13,7 +13,7 @@ import { NewGameComponent } from './pages/new-game/new-game.component';
 import { Error404Component } from './pages/error404/error404.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'home '},
+  { path: '', pathMatch: 'full', redirectTo: 'home'},
   { path: 'home', component: HomeComponent },
   { path: 'userProfile', component: UserProfileComponent },
   { path: 'gameDetail/:gameId', component: GameDetailComponent },
