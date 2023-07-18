@@ -1,1 +1,9 @@
-<p>game-list works!</p>
+<div class="series row">
+    <div class="serie col-12 col-md-4 p-3" *ngFor="let game of games">
+        <h3>{{game.name}}</h3>
+        <div class="imagen">
+            <img [src]="game.capsule_image">
+        </div>
+        <button [routerLink]="['/gameDetail', game.id]">Ver detalle</button>
+    </div>
+</div>

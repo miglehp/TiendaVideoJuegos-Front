@@ -10,8 +10,10 @@ import { OrderDetailComponent } from './pages/order-detail/order-detail.componen
 import { CreateFormComponent } from './pages/create-form/create-form.component';
 import { UpdateFormComponent } from './pages/update-form/update-form.component';
 import { NewGameComponent } from './pages/new-game/new-game.component';
+import { Error404Component } from './pages/error404/error404.component';
 
 const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'home '},
   { path: 'home', component: HomeComponent },
   { path: 'userProfile', component: UserProfileComponent },
   { path: 'gameDetail/:gameId', component: GameDetailComponent },
@@ -22,7 +24,7 @@ const routes: Routes = [
   { path: 'orderDetail/:orderId', component: OrderDetailComponent },
   { path: 'createForm', component: CreateFormComponent },
   { path: 'updateForm', component: UpdateFormComponent },
- 
+  { path: '**', component: Error404Component }
 ];
 
 @NgModule({

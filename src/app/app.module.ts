@@ -18,6 +18,7 @@ import { UpdateFormComponent } from './pages/update-form/update-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NewGameComponent } from './pages/new-game/new-game.component';
+import { Error404Component } from './pages/error404/error404.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { NewGameComponent } from './pages/new-game/new-game.component';
     CreateFormComponent,
     UpdateFormComponent,
     NewGameComponent,
-    
+    Error404Component,
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,22 @@
-<p>game-detail works!</p>
+<div class="game row">
+    <div class="serie col-12 col-md-4 p-3" *ngIf="game">
+        <h3>Título: {{game.name}}</h3>
+        <p>Creador/es: {{game.developers}}</p>
+        <p>Puntuación: {{game.publishers}}</p>
+        <p>Fecha de salida: {{game.release_date}}</p>
+        <p>Requerimiento mínimo en PC: {{game.pc_requirements_minimum}}</p>
+        <p>Requerimiento mínimo en Linux: {{game.linux_requirements}}</p>
+        <p>Requirimiento mínimo en MAC: {{game.mac_requirements}}</p>
+        <div class="imagen">
+            <img [src]="game.capsule_image">
+        </div>
+        <p>Precio: {{game.price}}</p>
+    </div>
+</div>
+<div>
+    <button class="btn btn-info">Añadir al carrito</button>
+</div>
+
+<div *ngIf="!game">
+    <h3>No se encuentra el juego especificado</h3>
+</div>

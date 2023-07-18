@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { GAMES} from '../db/games.db';
 import { Game } from '../interfaces/game.interface';
 
 @Injectable({
@@ -20,4 +22,19 @@ export class GameService {
       this.httpClient.post<Game>(`${this.baseUrl}/newGame`, formValue)
     )
   }
+
+
+  constructor() { }
+
+
+  getAll(): Game[]{
+    return GAMES;
+  }
+
+  getById(id: number): Game | undefined {
+      return GAMES.find(game => game.id === id);
+    }
+
+  
+
 }
