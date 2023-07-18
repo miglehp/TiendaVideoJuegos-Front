@@ -17,6 +17,7 @@ import { CreateFormComponent } from './pages/create-form/create-form.component';
 import { UpdateFormComponent } from './pages/update-form/update-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { Error404Component } from './pages/error404/error404.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { HttpClientModule } from '@angular/common/http';
     OrderDetailComponent,
     CreateFormComponent,
     UpdateFormComponent,
+    Error404Component,
     
   ],
   imports: [
