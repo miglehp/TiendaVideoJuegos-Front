@@ -27,6 +27,7 @@ export class CreateFormComponent {
     Validators.required,
     Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)
   ]),
+  
   email: new FormControl(null, [
     Validators.required,
     Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,10}$/)
@@ -41,19 +42,10 @@ ngOnInit(){
   
 }
 
-  async onSubmit(){
-    const response = await this.userService.create(this.formulario.value)
+onClick() {
+  const response = this.userService.create(this.formulario.value)
 
-    /* if (response.fatal) {
-      // Error en la inserción
-    
-      return alert('Error en la inserción.');
-    }
-
-    // Inserción correcta
-    this.router.navigate(['/user']); */
-  
-  }
+}
   checkError(field: string, error: string) {
     return this.formulario.get(field)?.hasError(error) && this.formulario.get(field)?.touched;
   }

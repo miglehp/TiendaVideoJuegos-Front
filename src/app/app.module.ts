@@ -17,6 +17,7 @@ import { CreateFormComponent } from './pages/create-form/create-form.component';
 import { UpdateFormComponent } from './pages/update-form/update-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NewGameComponent } from './pages/new-game/new-game.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { HttpClientModule } from '@angular/common/http';
     OrderDetailComponent,
     CreateFormComponent,
     UpdateFormComponent,
+    NewGameComponent,
     
   ],
   imports: [
