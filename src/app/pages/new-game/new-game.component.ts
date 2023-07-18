@@ -12,9 +12,9 @@ export class NewGameComponent {
 
   formulario: FormGroup;
   gameService = inject(GameService)
-  
+  router = inject(Router)
 
-  constructor(private router: Router){
+  constructor(){
     this.formulario = new FormGroup({
       
       name: new FormControl(null, [
