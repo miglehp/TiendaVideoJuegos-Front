@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { GameService } from 'src/app/services/game.service';
 
 @Component({
@@ -11,6 +12,7 @@ export class NewGameComponent {
 
   formulario: FormGroup;
   gameService = inject(GameService)
+  router = inject(Router)
 
   constructor(){
     this.formulario = new FormGroup({
@@ -55,6 +57,9 @@ export class NewGameComponent {
       support_info_email: new FormControl()
 
     })
+  }
+  registrarJuego() {
+    this.router.navigate(['/gameList'])
   }
   onClick() {
     const response = this.gameService.registro(this.formulario.value)

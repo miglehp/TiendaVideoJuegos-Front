@@ -14,12 +14,17 @@ export class GameService {
   baseUrl: string;
 
   constructor() { 
-    this.baseUrl = 'http://localhost:4200/newGame'
+    this.baseUrl = 'http://localhost:3000/api/games'
+  }
+  getAll(): Promise<Game[]> {
+    return firstValueFrom(
+      this.httpClient.get<Game[]>(this.baseUrl)
+    )
   }
 
   registro(formValue: any): Promise<Game> {
     return firstValueFrom(
-      this.httpClient.post<Game>(`${this.baseUrl}/newGame`, formValue)
+      this.httpClient.post<Game>(`${this.baseUrl}`, formValue)
     )
   }
 
