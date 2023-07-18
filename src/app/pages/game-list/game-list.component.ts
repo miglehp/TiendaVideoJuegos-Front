@@ -17,8 +17,8 @@ export class GameListComponent {
     this.games = [];
   }
 
-  ngOnInit(){
-    this.games = this.gamesService.getAll();
+  async ngOnInit(){
+    this.games = await this.gamesService.getAll();
   }
 
 }

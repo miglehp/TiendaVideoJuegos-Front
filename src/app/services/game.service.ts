@@ -27,13 +27,8 @@ export class GameService {
     )
   }
 
-
-  
-
   getById(id: number): Game | undefined {
       return GAMES.find(game => game.id === id);
     }
-
-  
 
 }
