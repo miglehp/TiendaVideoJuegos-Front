@@ -1,10 +1,29 @@
-@import '../variables.scss';
+@import "../variables.scss";
 
 header {
-    background-color: $background-light-2;
-    border-bottom: 2px solid $primary-color-light;
+  background-color: $background-light-2;
+  border-bottom: 0.2rem solid $primary-color-light;
 }
 
-.header-main{
-    min-height: calc(100vh - 50px);
+header.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+main {
+  margin-top: 10rem;
+}
+
+footer {
+  background-color: $background-dark;
+  color: $text-color-dark;
+  border-top: 0.2rem solid $primary-color-light;
+  display: flex;
+  align-items: center;
+  min-height: 5rem;
+}
+
+.header-main {
+  min-height: calc(100vh - 15rem);
 }
