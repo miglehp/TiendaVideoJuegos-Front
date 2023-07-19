@@ -25,10 +25,10 @@ export class GameDetailComponent {
   }
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe(params => {
+    this.activatedRoute.params.subscribe(async params => {
 
-      this.game = this.gamesService.getById(parseInt(params['gameId']));
-
+      this.game = await this.gamesService.getById(parseInt(params['gameId']));
+      console.log(this.game);
     });
   }
 
