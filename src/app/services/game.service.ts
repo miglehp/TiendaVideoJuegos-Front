@@ -13,6 +13,7 @@ export class GameService {
   constructor() {
     this.baseUrl = 'http://localhost:3000/api/games';
   }
+
   getAll(): Promise<Game[]> {
     return firstValueFrom(this.httpClient.get<Game[]>(this.baseUrl));
   }
