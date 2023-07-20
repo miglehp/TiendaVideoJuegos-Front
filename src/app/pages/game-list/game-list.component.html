@@ -1,9 +1,18 @@
-<div class="series row">
-    <div class="serie col-12 col-md-4 p-3" *ngFor="let game of games">
-        <h3>{{game.name}}</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-4 p-3" *ngFor="let game of games">
+      <div class="card-body">
+        <h5>{{ game.name }}</h5>
         <div class="imagen">
-            <img [src]="game.capsule_image">
+          <img [src]="game.capsule_image" />
         </div>
-        <button [routerLink]="['/gameDetail', game.id]">Ver detalle</button>
+        <button
+          class="btn btn-outline-primary mt-2"
+          [routerLink]="['/gameDetail', game.id]"
+        >
+          Ver detalles
+        </button>
+      </div>
     </div>
+  </div>
 </div>

@@ -1,6 +1,47 @@
-@import './variables.scss';
+@import "./variables.scss";
 
 body {
-    background-color: $background-light;
-    color: $text-color-light;
+  background-color: $background-light;
+  color: $text-color-light;
+}
+
+.btn-outline-primary {
+  color: $primary-color-light;
+  border-color: $primary-color-light;
+
+  &:hover {
+    color: $text-color-dark;
+    background-color: $primary-color-light;
+    border-color: $primary-color-light;
+  }
+
+  &:focus {
+    color: $text-color-dark;
+    background-color: $primary-color-light;
+    border-color: $primary-color-light;
+  }
+
+  &:active {
+    color: $text-color-dark;
+    background-color: $primary-color-light;
+    border-color: $primary-color-light;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: $secondary-color;
+  font-weight: 500;
+
+  &:hover {
+    color: $secondary-color-lighter;
+  }
+
+  &:focus {
+    color: $secondary-color-light;
+  }
+
+  &:active {
+    color: $secondary-color-light;
+  }
 }
