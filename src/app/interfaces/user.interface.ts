@@ -7,5 +7,6 @@ export interface User {
     birth_date: string,
     profile_picture: string,
     is_admin: boolean,
-    validated: boolean
+    validated: boolean,
+    fatal: string
 }

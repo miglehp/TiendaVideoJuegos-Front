@@ -19,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NewGameComponent } from './pages/new-game/new-game.component';
 import { Error404Component } from './pages/error404/error404.component';
+import { LoginComponent } from './pages/login/login.component';
 import { BasketService } from './services/basket.service';
 
 @NgModule({
@@ -38,6 +39,7 @@ import { BasketService } from './services/basket.service';
     UpdateFormComponent,
     NewGameComponent,
     Error404Component,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,7 @@ import { CreateFormComponent } from './pages/create-form/create-form.component';
 import { UpdateFormComponent } from './pages/update-form/update-form.component';
 import { NewGameComponent } from './pages/new-game/new-game.component';
 import { Error404Component } from './pages/error404/error404.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -23,7 +24,8 @@ const routes: Routes = [
   { path: 'orderList', component: OrderListComponent },
   { path: 'orderDetail/:orderId', component: OrderDetailComponent },
   { path: 'createForm', component: CreateFormComponent },
-  { path: 'updateForm', component: UpdateFormComponent },
+  {path: 'login', component: LoginComponent},
+  { path: 'updateForm/:userId', component: UpdateFormComponent },
   { path: '**', component: Error404Component }
 ];
 
