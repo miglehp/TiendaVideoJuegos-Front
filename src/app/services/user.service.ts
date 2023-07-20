@@ -17,7 +17,7 @@ export class UserService {
 
   create(formValue: any): Promise<User | any>{
     return firstValueFrom(
-      this.httpClient.post<User | any>(this.baseUrl, formValue)
+      this.httpClient.post<User | any>(this.baseUrl + '/register', formValue)
     )
   }
 }

@@ -42,8 +42,13 @@ ngOnInit(){
   
 }
 
-onClick() {
-  const response = this.userService.create(this.formulario.value)
+async onSubmit() {
+  const response = await this.userService.create(this.formulario.value)
+  console.log(response);
+
+  if(response.fatal){
+    return alert('Error en la inserción. Prueba otra vez');
+  }
 
   this.router.navigate(['/userProfile'])
 

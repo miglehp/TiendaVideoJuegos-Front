@@ -1,5 +1,5 @@
 <h2>Nuevo usuario</h2>
-<form [formGroup]="formulario">
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
     <div class="mb-3">
         <label class="form-label">Username</label>
         <input type="text" class="form-control" formControlName="username">
@@ -45,7 +45,7 @@
         <input type="text" class="form-control" formControlName="foto_perfil">
     </div>
     
-    <input class="boton" type="submit" value="Enviar" (click)="onClick()" [disabled]="!formulario.valid">
+    <input class="boton" type="submit" value="Enviar" [disabled]="!formulario.valid">
 </form>
 
 
