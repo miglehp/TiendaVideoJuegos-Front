@@ -12,7 +12,7 @@ export class UserService {
    baseUrl: string;
 
   constructor() { 
-    this.baseUrl = 'http://localhost:4200/api/users';
+    this.baseUrl = 'http://localhost:3000/api/users';
   }
 
   create(formValue: any): Promise<User | any>{
