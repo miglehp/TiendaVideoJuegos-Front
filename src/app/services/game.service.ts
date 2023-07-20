@@ -23,7 +23,7 @@ export class GameService {
     );
   }
 
-  getById(id: number): Promise<Game> {
-    return firstValueFrom(this.httpClient.get<Game>(this.baseUrl + '/' + id));
+  getById(id: number): Promise<Game | any>{
+    return firstValueFrom(this.httpClient.get<Game | any>(this.baseUrl + '/' + id));
   }
 }
