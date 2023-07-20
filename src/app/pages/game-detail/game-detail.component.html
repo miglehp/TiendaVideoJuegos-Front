@@ -1,24 +1,92 @@
-<div class="container">
-    <div class="game row">
-        <div class="serie col-12 col-md-4 p-3" *ngIf="game">
-            <h3>Título: {{game.name}}</h3>
-            <p>Creador/es: {{game.developers}}</p>
-            <p>Puntuación: {{game.publishers}}</p>
-            <p>Fecha de salida: {{game.release_date}}</p>
-            <p>Requerimiento mínimo en PC: {{game.pc_requirements_minimum}}</p>
-            <p>Requerimiento mínimo en Linux: {{game.linux_requirements}}</p>
-            <p>Requirimiento mínimo en MAC: {{game.mac_requirements}}</p>
-            <div class="imagen">
-                <img [src]="game.capsule_image">
+<div class="container pb-5" *ngIf="game">
+  <button class="btn btn-outline-primary mb-2" [routerLink]="['/gameList']">
+    Go back
+  </button>
+  <div class="game" *ngIf="!game.fatal">
+    <div class="p-3">
+      <h3>{{ game.name }}</h3>
+      <div class="row">
+        <div class="col-12 col-md-8">
+          <div
+            id="screenshotCarrousel"
+            class="carousel slide mb-3"
+            data-bs-ride="true"
+          >
+            <div class="carousel-inner">
+              <div
+                class="carousel-item"
+                *ngFor="let screenshot of screenshots; let i = index"
+                [ngClass]="{ active: i === 0 }"
+              >
+                <img [src]="screenshot.path_full" class="d-block w-100" />
+              </div>
             </div>
-            <p>Precio: {{game.price}}</p>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#screenshotCarrousel"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#screenshotCarrousel"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
         </div>
+        <div class="col-12 col-md-4">
+          <div class="mt-2 mb-5 d-flex align-items-center">
+            <button class="btn btn-outline-primary">Add to cart</button>
+            <div class="px-2">at {{ game.price }}€</div>
+          </div>
+          <p>Desarrollador/es: {{ game.developers }}</p>
+          <p>Editor/es: {{ game.publishers }}</p>
+          <p
+            *ngIf="game.linux_requirements"
+            [innerHTML]="'Linux requirements: <br />' + game.linux_requirements"
+          ></p>
+          <p
+            *ngIf="game.mac_requirements"
+            [innerHTML]="'MAC requirements: <br />' + game.mac_requirements"
+          ></p>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-12">
+          <div>
+            <p
+              class="description"
+              [innerHTML]="'Description: <br />' + game.detailed_description"
+            ></p>
+            <p
+              [innerHTML]="
+                'Website: <a href=' +
+                game.website +
+                ' target=_blank >' +
+                game.website +
+                '</a>'
+              "
+            ></p>
+            <a href=""></a>
+          </div>
+        </div>
+      </div>
     </div>
-    <div>
-        <button class="btn btn-info">Añadir al carrito</button>
-    </div>
-    
-    <div *ngIf="!game">
-        <h3>No se encuentra el juego especificado</h3>
-    </div>
+  </div>
+  <div *ngIf="game.fatal">
+    <h3>No se encuentra el juego especificado</h3>
+  </div>
 </div>

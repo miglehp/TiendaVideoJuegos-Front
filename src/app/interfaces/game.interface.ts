@@ -18,5 +18,6 @@ export interface Game {
     price: number,
     release_date: string | null,
     support_info_url: string | null,
-    suport_info_email: string | null
+    suport_info_email: string | null,
+    fatal: string | null,
 }
