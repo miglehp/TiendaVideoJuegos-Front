@@ -18,6 +18,19 @@ export class UserService {
   create(formValue: any): Promise<User | any>{
     return firstValueFrom(
       this.httpClient.post<User | any>(this.baseUrl + '/register', formValue)
-    )
+    );
   }
+
+  getById(userId: number): Promise<User> {
+    return firstValueFrom(
+      this.httpClient.get<User>(`${this.baseUrl}/${userId}`)
+    );
+  }
+
+  login(formValue: any): Promise<User>{
+    return firstValueFrom(
+      this.httpClient.post<User | any>(this.baseUrl + '/login', formValue)
+    );
+  }
+
 }
