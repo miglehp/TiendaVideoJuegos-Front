@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { firstValueFrom } from 'rxjs';
-import { GAMES } from '../db/games.db';
 import { Game } from '../interfaces/game.interface';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
