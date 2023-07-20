@@ -31,7 +31,18 @@ export class LoginComponent {
   }
 
   async onSubmit(){
-    await this.userService
+    const response = await this.userService.login(this.formulario.value);
+    
+    if(response.fatal){
+      return alert(response.fatal);
+    }
+
+    localStorage.setItem('ecommerce_token', response.token);
+
+  }
+
+  checkError(field: string, error: string) {
+    return this.formulario.get(field)?.hasError(error) && this.formulario.get(field)?.touched;
   }
 
 }
