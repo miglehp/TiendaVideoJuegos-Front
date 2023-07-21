@@ -20,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NewGameComponent } from './pages/new-game/new-game.component';
 import { Error404Component } from './pages/error404/error404.component';
 import { BasketService } from './services/basket.service';
+import { DashboardComponent } from './pages/administrador/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { BasketService } from './services/basket.service';
     UpdateFormComponent,
     NewGameComponent,
     Error404Component,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
