@@ -45,3 +45,21 @@ a {
     color: $secondary-color-light;
   }
 }
+
+.page-link{
+  color: $primary-color;
+
+  &:hover{
+    color: $secondary-color-light;
+    cursor: pointer;
+  }
+
+  &.active {
+    background-color: $primary-color;
+    border-color: $primary-color-light;
+    &:hover {
+      color: $text-color-dark;
+      cursor: default;
+    }
+  }
+}

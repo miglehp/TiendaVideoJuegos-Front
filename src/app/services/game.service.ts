@@ -27,4 +27,7 @@ export class GameService {
   getById(id: number): Promise<Game> {
     return firstValueFrom(this.httpClient.get<Game>(this.baseUrl + '/' + id));
   }
+
+  getGamesByPage = (page: number): Promise<Game[]> => firstValueFrom(this.httpClient.get<Game[]>(this.baseUrl + '/paginate/' + page ));
+
 }
