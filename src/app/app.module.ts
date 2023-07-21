@@ -16,10 +16,12 @@ import { OrderDetailComponent } from './pages/order-detail/order-detail.componen
 import { CreateFormComponent } from './pages/create-form/create-form.component';
 import { UpdateFormComponent } from './pages/update-form/update-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NewGameComponent } from './pages/new-game/new-game.component';
 import { Error404Component } from './pages/error404/error404.component';
+import { LoginComponent } from './pages/login/login.component';
 import { BasketService } from './services/basket.service';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { BasketService } from './services/basket.service';
     UpdateFormComponent,
     NewGameComponent,
     Error404Component,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,9 @@ import { BasketService } from './services/basket.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
