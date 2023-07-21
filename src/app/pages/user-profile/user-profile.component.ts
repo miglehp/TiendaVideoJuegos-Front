@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -6,5 +9,44 @@ import { Component } from '@angular/core';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent {
+
+  activatedRoute = inject(ActivatedRoute);
+  userService = inject(UserService);
+
+  formulario: FormGroup;
+  userId: number;
+
+  constructor(){
+    
+    this.userId = 0;
+
+    this.formulario = new FormGroup({
+      username: new FormControl(null, [
+        Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)
+      ]),
+    
+      email: new FormControl(null, [
+        Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,10}$/)
+      ]),
+    })
+  }
+
+  ngOnInit(){
+    this.activatedRoute.params.subscribe(async params => {
+      const user = await this.userService.getProfile();
+      console.log(user);
+      this.userId = params['userId'];
+      const obj = { username: user.username, email: user.email };
+      this.formulario.setValue(obj);
+      
+    });
+  }
+
+  async onSubmit(){
+    const response = await this.userService.updateById(this.userId, this.formulario.value);
+    console.log(response);
+  }
+
+  
 
 }

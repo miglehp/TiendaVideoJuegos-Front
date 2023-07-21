@@ -13,6 +13,7 @@ import { NewGameComponent } from './pages/new-game/new-game.component';
 import { Error404Component } from './pages/error404/error404.component';
 import { DashboardComponent } from './pages/administrador/dashboard/dashboard.component';
 import { LoginGuard } from './guards';
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'orderList', component: OrderListComponent },
   { path: 'orderDetail/:orderId', component: OrderDetailComponent },
   { path: 'createForm', component: CreateFormComponent },
+  {path: 'login', component: LoginComponent},
   { path: 'updateForm', component: UpdateFormComponent },
   { path: '**', component: Error404Component },
 ];

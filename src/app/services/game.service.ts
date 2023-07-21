@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { firstValueFrom } from 'rxjs';
-import { GAMES } from '../db/games.db';
 import { Game } from '../interfaces/game.interface';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +13,7 @@ export class GameService {
   constructor() {
     this.baseUrl = 'http://localhost:3000/api/games';
   }
+
   getAll(): Promise<Game[]> {
     return firstValueFrom(this.httpClient.get<Game[]>(this.baseUrl));
   }
@@ -27,4 +27,7 @@ export class GameService {
   getById(id: number): Promise<Game> {
     return firstValueFrom(this.httpClient.get<Game>(this.baseUrl + '/' + id));
   }
+
+  getGamesByPage = (page: number): Promise<Game[]> => firstValueFrom(this.httpClient.get<Game[]>(this.baseUrl + '/paginate/' + page ));
+
 }
