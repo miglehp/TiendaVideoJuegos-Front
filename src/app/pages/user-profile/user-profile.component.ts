@@ -34,17 +34,21 @@ export class UserProfileComponent {
   ngOnInit(){
     this.activatedRoute.params.subscribe(async params => {
       const user = await this.userService.getProfile();
-      console.log(user);
+      
       this.userId = params['userId'];
       const obj = { username: user.username, email: user.email };
       this.formulario.setValue(obj);
       
+
+
     });
+
+    this.userService.esAdmin('token')
   }
 
   async onSubmit(){
     const response = await this.userService.updateById(this.userId, this.formulario.value);
-    console.log(response);
+   
   }
 
   

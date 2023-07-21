@@ -3,6 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { User } from '../interfaces/user.interface';
 import { firstValueFrom } from 'rxjs';
 import { Login } from '../interfaces/login.interface';
+import jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +49,21 @@ export class UserService {
 
   isLogged(): Boolean{
     return localStorage.getItem('ecommerce_token') ? true : false;
+  }
+
+  getDecodedAccessToken(token: string): any {
+    try {
+      return jwt_decode(token);
+    } catch(Error) {
+      return null;
+    }
+  }
+
+  esAdmin(token: string): Boolean {
+
+    let decodedToken = this.getDecodedAccessToken(token);
+    return Boolean(decodedToken.userRole);
+
   }
 
 }

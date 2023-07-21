@@ -40,6 +40,8 @@ export class LoginComponent {
     localStorage.setItem('ecommerce_token', response.token);
     console.log(response);
 
+    const tokenInfo = this.userService.getDecodedAccessToken(response.token);
+
   }
 
   checkError(field: string, error: string) {

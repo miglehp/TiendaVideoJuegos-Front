@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +7,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+
+  userService = inject(UserService);
+  esAdmin: Boolean;
+  userToken: any;
+
+  constructor(){
+    this.esAdmin = false;
+  }
+
+  ngOnInit(){
+    this.getToken();
+  }
+
+
+  getToken(){
+    this.userToken = localStorage.getItem('ecommerce_token')
+    
+  }
 
 }
