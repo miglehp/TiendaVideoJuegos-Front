@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'orderDetail/:orderId', component: OrderDetailComponent },
   { path: 'createForm', component: CreateFormComponent },
   {path: 'login', component: LoginComponent},
-  { path: 'updateForm/:userId', component: UpdateFormComponent },
+  { path: 'updateForm', component: UpdateFormComponent },
   { path: '**', component: Error404Component }
 ];
 
