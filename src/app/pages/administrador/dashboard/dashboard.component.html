@@ -1,0 +1,26 @@
+<table>
+    <thead>
+      <tr>
+        <th>Número de pedido</th>
+        <th>Fecha</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let pedido of ultimosPedidos">
+        <td>{{ pedido.numero }}</td>
+        <td>{{ pedido.fecha }}</td>
+        <td>
+            {{ pedido.estado }}
+        <select>
+            <option value="pendiente">Pendiente</option>
+            <option value="en_preparacion">En preparación</option>
+            <option value="enviado">Enviado</option>
+          </select>
+          <button (click)="actualizarEstado(pedido)">Actualizar Estado</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

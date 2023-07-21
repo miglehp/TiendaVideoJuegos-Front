@@ -11,26 +11,33 @@ import { CreateFormComponent } from './pages/create-form/create-form.component';
 import { UpdateFormComponent } from './pages/update-form/update-form.component';
 import { NewGameComponent } from './pages/new-game/new-game.component';
 import { Error404Component } from './pages/error404/error404.component';
+import { DashboardComponent } from './pages/administrador/dashboard/dashboard.component';
+import { LoginGuard } from './guards';
 import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'home'},
+  { path: '', pathMatch: 'full', redirectTo: 'home' },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [LoginGuard],
+  },
   { path: 'home', component: HomeComponent },
   { path: 'userProfile', component: UserProfileComponent },
   { path: 'gameDetail/:gameId', component: GameDetailComponent },
   { path: 'gameList', component: GameListComponent },
-  { path: 'newGame', component: NewGameComponent},
+  { path: 'newGame', component: NewGameComponent },
   { path: 'basketPage', component: BasketPageComponent },
   { path: 'orderList', component: OrderListComponent },
   { path: 'orderDetail/:orderId', component: OrderDetailComponent },
   { path: 'createForm', component: CreateFormComponent },
   {path: 'login', component: LoginComponent},
   { path: 'updateForm', component: UpdateFormComponent },
-  { path: '**', component: Error404Component }
+  { path: '**', component: Error404Component },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
