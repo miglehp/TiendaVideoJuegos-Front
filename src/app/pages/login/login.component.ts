@@ -38,6 +38,7 @@ export class LoginComponent {
     }
 
     localStorage.setItem('ecommerce_token', response.token);
+    console.log(response);
 
   }
 

@@ -34,4 +34,20 @@ export class UserService {
     );
   }
 
+  updateById(userId: number, formValue: any): Promise<User>{
+    return firstValueFrom(
+      this.httpClient.put<User>(`${this.baseUrl}/${userId}`, formValue)
+    );
+  }
+
+  getProfile(): Promise<User>{
+    return firstValueFrom(
+      this.httpClient.get<User>(`${this.baseUrl}/profile`)
+    )
+  }
+
+  isLogged(): Boolean{
+    return localStorage.getItem('ecommerce_token') ? true : false;
+  }
+
 }
