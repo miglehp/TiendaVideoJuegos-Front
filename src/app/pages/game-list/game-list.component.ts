@@ -24,7 +24,7 @@ export class GameListComponent {
 
   ngOnInit() {
     this.setGames();
-  };
+  }
 
   setGames = async () => {
     this.response = await this.gamesService.getGamesByPage(this.currentPage);
@@ -67,5 +67,4 @@ export class GameListComponent {
     this.currentPage = page;
     this.setGames();
   };
-
 }
