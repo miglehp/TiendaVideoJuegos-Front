@@ -4,6 +4,7 @@ import { Game } from 'src/app/interfaces/game.interface';
 import { GameService } from 'src/app/services/game.service';
 import { Screenshot } from 'src/app/interfaces/screenshot.interface';
 import { ScreenshotService } from 'src/app/services/screenshot.service';
+import { BasketService } from 'src/app/services/basket.service';
 
 @Component({
   selector: 'app-game-detail',
@@ -12,8 +13,10 @@ import { ScreenshotService } from 'src/app/services/screenshot.service';
 })
 export class GameDetailComponent {
   private gamesService = inject(GameService);
+  private basketService = inject(BasketService)
   private screenshotServ = inject(ScreenshotService);
   private activatedRoute = inject(ActivatedRoute);
+
 
   game: Game | undefined;
   screenshots: Screenshot[];
@@ -29,4 +32,10 @@ export class GameDetailComponent {
       console.log(this.game);
     });
   }
+
+  async onClickAddGame() {
+    const basket = await this.basketService.create(this.game!);
+    console.log(basket);
+  }
+
 }
