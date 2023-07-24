@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Game } from 'src/app/interfaces/game.interface';
 import { Genre } from 'src/app/interfaces/genre.interface';
 import { GameService } from 'src/app/services/game.service';
@@ -13,25 +14,47 @@ export class GameListComponent {
   private gamesService = inject(GameService);
   private genresService = inject(GenresService);
 
+  filtros: FormGroup;
+
   games: Game[];
-  response: any;
-  currentPage: number;
-  maxPages: number | undefined;
-  closePages: number[];
   genres: Genre[];
-  currentFilter: string | undefined;
+
+  response: any;
+
+  currentPage: number;
+  closePages: number[];
+  maxPages: number | undefined;
+
+  activeFilter:
+    | {
+        genre: string;
+        title: string;
+      };
 
   constructor() {
     this.currentPage = 1;
     this.closePages = [];
     this.games = [];
     this.genres = [];
+
+    this.activeFilter = {
+      genre:'',
+      title: ''
+    }
+
+    this.filtros = new FormGroup({
+      title: new FormControl(null),
+      genre: new FormControl(null),
+    });
   }
 
   ngOnInit() {
     this.setGames();
     this.setGenres();
   }
+
+  pageDisabler = (page: number): boolean =>
+    page === this.currentPage || page > this.maxPages!;
 
   setGames = async () => {
     this.response = await this.gamesService.getGamesByPage(this.currentPage);
@@ -44,10 +67,30 @@ export class GameListComponent {
     this.genres = await this.genresService.getAll();
   };
 
-  setGamesFiltered = async (filter: string) => {
-    this.currentFilter = filter;
-    this.response = await this.genresService.getGamesOfGenre(
+  filteredGamesByGenre = async (filter: string) => {
+    this.response = await this.gamesService.getGamesByGenreAndPage(
       filter,
+      this.currentPage
+    );
+    this.maxPages = this.response.max_pages;
+    this.games = this.response.result;
+    this.closePages = this.setClosePages(this.currentPage, this.maxPages!);
+  };
+
+  filteredGamesByTitle = async (title: string) => {
+    this.response = await this.gamesService.getGamesByTitleAndPage(
+      title,
+      this.currentPage
+    );
+    this.maxPages = this.response.max_pages;
+    this.games = this.response.result;
+    this.closePages = this.setClosePages(this.currentPage, this.maxPages!);
+  };
+
+  filteredGamesByGenreAndTitle = async (genre: string, title: string) => {
+    this.response = await this.gamesService.getGamesByGenreAndTitleAndPage(
+      genre,
+      title,
       this.currentPage
     );
     this.maxPages = this.response.max_pages;
@@ -85,24 +128,37 @@ export class GameListComponent {
     return closePages;
   };
 
-  onChangeFilterByGenre = async ($event: any) => {
-    if ($event.target.value) {
-      this.setGamesFiltered($event.target.value);
+  onClickGoToPage = async (page: number) => {
+    this.currentPage = page;
+    if (this.activeFilter.genre && this.activeFilter.title) {
+      this.filteredGamesByGenreAndTitle(
+        this.activeFilter.genre,
+        this.activeFilter.title
+      );
+    } else if (this.activeFilter.genre) {
+      this.filteredGamesByGenre(this.activeFilter.genre);
+    } else if (this.activeFilter.title) {
+      this.filteredGamesByTitle(this.activeFilter.title);
     } else {
       this.setGames();
     }
   };
 
-  onClickGoToPage = async (page: number) => {
-    this.currentPage = page;
-    if (this.currentFilter) {
-      console.log(
-        `navegando a la página ${page} con el filtro ${this.currentFilter}`
-      );
-      this.setGamesFiltered(this.currentFilter);
+  onSubmitFiltros = () => {
+    const filtros = this.filtros.value;
+    this.currentPage = 1;
+    this.activeFilter = {
+      genre: filtros.genre,
+      title: filtros.title,
+    };
+    if (filtros.title && filtros.genre) {
+      this.filteredGamesByGenreAndTitle(filtros.genre, filtros.title);
+    } else if (filtros.title) {
+      this.filteredGamesByTitle(filtros.title);
+    } else if (filtros.genre) {
+      this.filteredGamesByGenre(filtros.genre);
     } else {
       this.setGames();
-      console.log(`navegando a la página ${page} sin filtros`);
     }
   };
 }

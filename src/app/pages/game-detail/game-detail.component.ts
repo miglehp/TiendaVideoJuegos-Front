@@ -29,7 +29,6 @@ export class GameDetailComponent {
     this.activatedRoute.params.subscribe(async (params) => {
       this.game = await this.gamesService.getById(parseInt(params['gameId']));
       this.screenshots = await this.screenshotServ.getScreenshotsById(parseInt(params['gameId']));
-      console.log(this.game);
     });
   }
 

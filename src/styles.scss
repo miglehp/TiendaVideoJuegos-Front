@@ -22,9 +22,9 @@ body {
   }
 
   &:active {
-    color: $text-color-dark;
-    background-color: $primary-color-light;
-    border-color: $primary-color-light;
+    color: $text-color-dark !important;
+    background-color: $primary-color-light !important;
+    border-color: $primary-color-light !important;
   }
 }
 
@@ -42,7 +42,7 @@ a {
   }
 
   &:active {
-    color: $secondary-color-light;
+    color: $secondary-color-light !important;
   }
 }
 
