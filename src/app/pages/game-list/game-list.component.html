@@ -7,9 +7,15 @@
         <input type="search" class="form-control" id="titleSearch" aria-describedby="emailHelp" placeholder="Game title to search...">
       </div>
       <div class="mb-3">
-        <select name="genres" id="genres" class="form-select">
+        <select 
+        name="genres" 
+        id="genres" 
+        class="form-select"
+        (change)="onChangeFilterByGenre($event)">
           <option value="" selected>Select genre</option>
-          <option value=""></option>
+          <option [value]="genre.description" *ngFor="let genre of genres">
+            {{ genre.description | titlecase }}
+          </option>
         </select>
       </div>
       <button type="submit" class="btn btn-outline-primary">Submit</button>
