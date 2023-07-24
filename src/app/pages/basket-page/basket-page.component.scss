@@ -6,12 +6,32 @@
 }
 
 .producto {
+    background-color: beige;
     width: 20%;
-    border: 1px solid gray;
+    border: 2px solid gray;
     padding: 10px 20px;
+    border-radius: 5px;
     cursor: pointer;
+}
+
+.price {
+    color: rgb(155, 152, 152);
+    font-weight: 500;
 }
 
 .producto img {
     width: 100%;
+    border: 1px solid black;
+}
+
+.name {
+    font-weight: 700;
+}
+
+.totalPrice {
+    color: #3a2a54;
+    position: absolute;
+    bottom: 70px;
+    right: 20px;
+    padding: 5px;
 }
