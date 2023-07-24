@@ -50,7 +50,7 @@ async onSubmit() {
     return alert('Error en la inserción. Prueba otra vez');
   }
 
-  this.router.navigate(['/userProfile'])
+  this.router.navigate(['/home']);
 
 }
   checkError(field: string, error: string) {
