@@ -16,6 +16,6 @@ export class GenresService {
 
   getAll = (): Promise<Genre[]> => firstValueFrom(this.httpClient.get<Genre[]>(this.baseUrl));
 
-  getGamesOfGenre = (genre: string, page: number = 1) => firstValueFrom(this.httpClient.get(`${this.baseUrl}/${genre}/paginate/${page}`));
+  getGenresFromGame = (gameId: number): Promise<Genre[]> => firstValueFrom(this.httpClient.get<Genre[]>(`${this.baseUrl}/${gameId}`));
 
 }
