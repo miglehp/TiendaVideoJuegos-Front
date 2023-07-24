@@ -1,15 +1,16 @@
 import { Injectable, inject } from '@angular/core';
 import { Game } from '../interfaces/game.interface';
-import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BasketService {
-  httpClient = inject(HttpClient);
-  private arrGames: Game[];
+
+  arrGames: Game[];
+
 
   constructor() {
+    
     this.arrGames = [];
   }
 
@@ -21,15 +22,26 @@ export class BasketService {
     return this.arrGames;
   }
 
-  create(newGame: Game): void {
+  create(newGame: Game): any {
     this.arrGames.push(newGame);
+    this.saveData(this.arrGames);
   }
 
   deleteGame(indice: number): void {
     this.arrGames.splice(indice, 1);
+    this.saveData(this.arrGames);
   }
 
-  saveData(games: []) {
+  saveData(games: Game[]) {
     localStorage.setItem('basket', JSON.stringify(games));
   }
+
+  precioAcumulado() {
+    let precio = 0
+    for (let game of this.arrGames) {
+      precio += game.price; 
+    }
+    return precio;
+  }
+  
 }
