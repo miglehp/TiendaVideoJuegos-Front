@@ -1,11 +1,14 @@
+<div class="container">
 
-<div class="productos">
-    <div class="producto" *ngFor="let game of games; let indice = index">
-        <img [src]="game.header_image" alt="">
-        <p>{{game.name}}</p>
-        <p>{{game.price}}€</p>
-        <button (click)="onClickEliminar(indice)">Eliminar</button>
+    <div class="productos">
+        <div class="producto" *ngFor="let game of games; let indice = index">
+            <img [src]="game.header_image" alt="">
+            <p class="name">{{game.name}}</p>
+            <p class="price">Subtotal: {{game.price}}€</p>
+            <button class="btn btn-danger" (click)="onClickEliminar(indice)">Remove</button>
+        </div>
     </div>
-</div>
 
-<h3>Total: {{getTotalPrice()}}</h3>
+    
+</div>
+<h3 class="totalPrice">Total: {{getTotalPrice().toFixed(2)}}€</h3>
