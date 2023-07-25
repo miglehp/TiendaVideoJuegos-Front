@@ -16,15 +16,9 @@ export class DashboardComponent implements OnInit {
     this.obtenerUltimosPedidos();
   }
 
-  obtenerUltimosPedidos(): void {
-    this.orderService.obtenerUltimosPedidos().subscribe(
-      (data) => {
-        this.ultimosPedidos = data; // Asignar los últimos pedidos obtenidos desde el backend a la variable
-      },
-      (error) => {
-        console.error('Error al obtener los ultimos pedidos:', error);
-      }
-    );
+  async obtenerUltimosPedidos() {
+    this.ultimosPedidos = await this.orderService.obtenerUltimosPedidos();
+    
   }
   actualizarEstado(pedido: any): void {
     this.orderService
