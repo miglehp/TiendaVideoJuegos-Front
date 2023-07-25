@@ -1,6 +1,9 @@
 <div class="container pb-5" *ngIf="game">
   <button class="btn btn-outline-primary mb-2" [routerLink]="['/gameList']">
-    Go back
+    Keep buying
+  </button>
+  <button class="btn btn-outline-primary mb-2" [routerLink]="['/basketPage']">
+    Go to Cart
   </button>
   <div class="game" *ngIf="!game.fatal">
     <div class="p-3">
