@@ -10,6 +10,7 @@ export class DashboardComponent implements OnInit {
   ultimosPedidos: any[] = []; // Variable para almacenar los últimos pedidos
 
   orderService = inject(OrderService);
+  nuevoEstado: string = '';
 
   constructor() {}
   ngOnInit(): void {
@@ -17,20 +18,24 @@ export class DashboardComponent implements OnInit {
   }
 
   async obtenerUltimosPedidos() {
-    this.ultimosPedidos = await this.orderService.obtenerUltimosPedidos();
-    
+    this.ultimosPedidos = (await this.orderService.obtenerUltimosPedidos()).pedidos;
+    console.log(this.ultimosPedidos);
   }
-  actualizarEstado(pedido: any): void {
-    this.orderService
-      .actualizarEstadoPedido(pedido.id, pedido.nuevoEstado)
-      .subscribe(
-        (data) => {
+  async actualizarEstado(pedido: any) {
+    const data = await this.orderService
+      .actualizarEstadoPedido(pedido.id, this.nuevoEstado)
+      
           pedido.estado = pedido.nuevoEstado;
           pedido.nuevoEstado = ''; // Reiniciar el valor del nuevo estado
-        },
-        (error) => {
-          console.error('Error al actualizar el estado del pedido', error);
-        }
-      );
+          console.log(data);
+        
+        
+    
+        
+      
+  }
+
+  onChange($event: any){
+    this.nuevoEstado = $event.target.value;
   }
 }

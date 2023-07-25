@@ -19,12 +19,11 @@ export class OrderService {
     );
   }
 
-  actualizarEstadoPedido(
-    pedidoId: number,
-    nuevoEstado: string
-  ): Observable<any> {
+  actualizarEstadoPedido(pedidoId: number, nuevoEstado: string): Promise<any> {
     const url = `${this.baseUrl}/${pedidoId}`;
-    return this.httpClient.put<any>(url, { estado: nuevoEstado });
+    return firstValueFrom(
+      this.httpClient.put<any>(url, { estado: nuevoEstado })
+      );
   }
 
   crearPedido(arrGames: number[]) {
@@ -32,5 +31,7 @@ export class OrderService {
       this.httpClient.post(`${this.baseUrl}/new`, {games: arrGames})
     );
   }
+
+  
 
 }
