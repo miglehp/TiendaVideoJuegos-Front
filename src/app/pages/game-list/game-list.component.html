@@ -13,12 +13,8 @@
           />
         </div>
         <div class="mb-3">
-          <select
-            formControlName="genre"
-            id="genres"
-            class="form-select"
-          >
-            <option value='' selected>Select genre</option>
+          <select formControlName="genre" id="genres" class="form-select">
+            <option value="" selected>Select genre</option>
             <option [value]="genre.description" *ngFor="let genre of genres">
               {{ genre.description | titlecase }}
             </option>

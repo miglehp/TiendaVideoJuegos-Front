@@ -28,12 +28,29 @@ export class GameService {
     return firstValueFrom(this.httpClient.get<Game>(this.baseUrl + '/' + id));
   }
 
-  getGamesByPage = (page: number): Promise<Game[]> => firstValueFrom(this.httpClient.get<Game[]>(this.baseUrl + '/paginate/' + page ));
+  getGamesByPage = (page: number): Promise<Game[]> =>
+    firstValueFrom(
+      this.httpClient.get<Game[]>(this.baseUrl + '/paginate/' + page)
+    );
 
-  getGamesByGenreAndPage = (genre: string, page: number = 1) => firstValueFrom(this.httpClient.get(`${this.baseUrl}/genre/${genre}/paginate/${page}`));
+  getGamesByGenreAndPage = (genre: string, page: number = 1) =>
+    firstValueFrom(
+      this.httpClient.get(`${this.baseUrl}/genre/${genre}/paginate/${page}`)
+    );
 
-  getGamesByTitleAndPage = (title: string, page: number = 1) => firstValueFrom(this.httpClient.get(`${this.baseUrl}/title/${title}/paginate/${page}`));
+  getGamesByTitleAndPage = (title: string, page: number = 1) =>
+    firstValueFrom(
+      this.httpClient.get(`${this.baseUrl}/title/${title}/paginate/${page}`)
+    );
 
-  getGamesByGenreAndTitleAndPage = (genre: string, title: string, page: number = 1) => firstValueFrom(this.httpClient.get(`${this.baseUrl}/genre/${genre}/title/${title}/paginate/${page}`));
-
+  getGamesByGenreAndTitleAndPage = (
+    genre: string,
+    title: string,
+    page: number = 1
+  ) =>
+    firstValueFrom(
+      this.httpClient.get(
+        `${this.baseUrl}/genre/${genre}/title/${title}/paginate/${page}`
+      )
+    );
 }
