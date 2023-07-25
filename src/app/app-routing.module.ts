@@ -32,9 +32,9 @@ const routes: Routes = [
   { path: 'orderList', component: OrderListComponent },
   { path: 'orderDetail/:orderId', component: OrderDetailComponent },
   { path: 'createForm', component: CreateFormComponent },
-  {path: 'login', component: LoginComponent},
+  { path: 'login', component: LoginComponent },
   { path: 'updateForm', component: UpdateFormComponent },
-  {path: 'ordersByUser', component: OrdersByUserComponent},
+  { path: 'ordersByUser', component: OrdersByUserComponent },
   { path: '**', component: Error404Component },
 ];
 

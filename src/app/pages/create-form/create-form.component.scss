@@ -1,39 +1,36 @@
-
-h2{
-    font-family: 'Courier New', Courier, monospace;
-    margin: 20px;
-    margin: 50px;
+h2 {
+  font-family: "Courier New", Courier, monospace;
+  margin: 20px;
+  margin: 50px;
 }
-form{
-    width: 50%;
-    height: 100%;
-    background-color: plum;
-    margin: 50px;
-    border: 2px solid purple;
-
+form {
+  width: 50%;
+  height: 100%;
+  background-color: plum;
+  margin: 50px;
+  border: 2px solid purple;
 }
-form div{
-    padding: 5px;
+form div {
+  padding: 5px;
 }
-.boton{
-    margin-left: 5px;
-    margin-bottom: 5px;
-    background-color: lightcoral;
-    
+.boton {
+  margin-left: 5px;
+  margin-bottom: 5px;
+  background-color: lightcoral;
 }
 input.ng-pristine {
-    border: 2px solid dodgerblue;
+  border: 2px solid dodgerblue;
 }
 
 input.ng-valid.ng-touched {
-    border: 2px solid green;
+  border: 2px solid green;
 }
 
 input.ng-invalid.ng-touched {
-    border: 2px solid tomato;
+  border: 2px solid tomato;
 }
 
 .error {
-    color: tomato;
-    font-size: 10px;
+  color: tomato;
+  font-size: 10px;
 }

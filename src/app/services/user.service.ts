@@ -6,24 +6,21 @@ import { Login } from '../interfaces/login.interface';
 import jwt_decode from 'jwt-decode';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
+  httpClient = inject(HttpClient);
+  baseUrl: string;
 
-   httpClient = inject(HttpClient);
-   baseUrl: string;
-
-  constructor() { 
+  constructor() {
     this.baseUrl = 'http://localhost:3000/api/users';
   }
 
-  getAll(): any{
-    return firstValueFrom(
-      this.httpClient.get(this.baseUrl)
-    );
+  getAll(): any {
+    return firstValueFrom(this.httpClient.get(this.baseUrl));
   }
 
-  create(formValue: any): Promise<User>{
+  create(formValue: any): Promise<User> {
     return firstValueFrom(
       this.httpClient.post<User>(this.baseUrl + '/register', formValue)
     );
@@ -35,41 +32,36 @@ export class UserService {
     );
   }
 
-  login(formValue: any): Promise<Login>{
+  login(formValue: any): Promise<Login> {
     return firstValueFrom(
       this.httpClient.post<Login>(this.baseUrl + '/login', formValue)
     );
   }
 
-  updateById(userId: number, formValue: any): Promise<User>{
+  updateById(userId: number, formValue: any): Promise<User> {
     return firstValueFrom(
       this.httpClient.put<User>(`${this.baseUrl}/${userId}`, formValue)
     );
   }
 
-  getProfile(): Promise<User>{
-    return firstValueFrom(
-      this.httpClient.get<User>(`${this.baseUrl}/profile`)
-    )
+  getProfile(): Promise<User> {
+    return firstValueFrom(this.httpClient.get<User>(`${this.baseUrl}/profile`));
   }
 
-  isLogged(): Boolean{
+  isLogged(): Boolean {
     return localStorage.getItem('ecommerce_token') ? true : false;
   }
 
   getDecodedAccessToken(token: string): any {
     try {
       return jwt_decode(token);
-    } catch(Error) {
+    } catch (Error) {
       return null;
     }
   }
 
   esAdmin(token: string): Boolean {
-
     let decodedToken = this.getDecodedAccessToken(token);
     return Boolean(decodedToken.userRole);
-
   }
-
 }

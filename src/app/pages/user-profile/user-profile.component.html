@@ -1,29 +1,39 @@
 <h2>User profile</h2>
 <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
-    <div class="mb-3">
-        <label class="form-label">Username</label>
-        <input type="text" class="form-control" formControlName="username" [readonly]="true">
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Email</label>
-        <input type="text" class="form-control" formControlName="email" [readOnly]="true">
-    </div> 
-    <input class="boton" type="submit" value="Enviar" [disabled]="true">
+  <div class="mb-3">
+    <label class="form-label">Username</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="username"
+      [readonly]="true"
+    />
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Email</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="email"
+      [readOnly]="true"
+    />
+  </div>
+  <input class="boton" type="submit" value="Enviar" [disabled]="true" />
 </form>
 
 <h2>Edit user profile</h2>
 <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
-    <div class="mb-3">
-        <label class="form-label">Username</label>
-        <input type="text" class="form-control" formControlName="username">
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Email</label>
-        <input type="text" class="form-control" formControlName="email">
-    </div> 
-    <div class="mb-3">
-        <label class="form-label">Password</label>
-        <input type="password" class="form-control" formControlName="password">
-    </div> 
-    <input class="boton" type="submit" value="Enviar">
+  <div class="mb-3">
+    <label class="form-label">Username</label>
+    <input type="text" class="form-control" formControlName="username" />
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Email</label>
+    <input type="text" class="form-control" formControlName="email" />
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Password</label>
+    <input type="password" class="form-control" formControlName="password" />
+  </div>
+  <input class="boton" type="submit" value="Enviar" />
 </form>

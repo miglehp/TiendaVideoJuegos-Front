@@ -4,10 +4,9 @@ import { Screenshot } from '../interfaces/screenshot.interface';
 import { firstValueFrom } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ScreenshotService {
-
   httpClient = inject(HttpClient);
   baseUrl: string;
 
@@ -16,7 +15,8 @@ export class ScreenshotService {
   }
 
   getScreenshotsById = (gameId: number): Promise<Screenshot[]> => {
-    return firstValueFrom(this.httpClient.get<Screenshot[]>(this.baseUrl + '/' + gameId));
-  }
-
+    return firstValueFrom(
+      this.httpClient.get<Screenshot[]>(this.baseUrl + '/' + gameId)
+    );
+  };
 }
