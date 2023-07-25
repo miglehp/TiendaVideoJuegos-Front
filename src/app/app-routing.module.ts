@@ -14,7 +14,9 @@ import { Error404Component } from './pages/error404/error404.component';
 import { DashboardComponent } from './pages/administrador/dashboard/dashboard.component';
 import { LoginGuard } from './guards';
 import { LoginComponent } from './pages/login/login.component';
+import { EditGameComponent } from './pages/edit-game/edit-game.component';
 import { OrdersByUserComponent } from './pages/orders-by-user/orders-by-user.component';
+
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -28,6 +30,7 @@ const routes: Routes = [
   { path: 'gameDetail/:gameId', component: GameDetailComponent },
   { path: 'gameList', component: GameListComponent },
   { path: 'newGame', component: NewGameComponent },
+  { path: 'editGame', component: EditGameComponent },
   { path: 'basketPage', component: BasketPageComponent },
   { path: 'orderList', component: OrderListComponent },
   { path: 'orderDetail/:orderId', component: OrderDetailComponent },
