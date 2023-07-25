@@ -17,6 +17,12 @@ export class UserService {
     this.baseUrl = 'http://localhost:3000/api/users';
   }
 
+  getAll(): any{
+    return firstValueFrom(
+      this.httpClient.get(this.baseUrl)
+    );
+  }
+
   create(formValue: any): Promise<User>{
     return firstValueFrom(
       this.httpClient.post<User>(this.baseUrl + '/register', formValue)

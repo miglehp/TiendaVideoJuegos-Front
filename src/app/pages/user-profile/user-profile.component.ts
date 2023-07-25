@@ -28,7 +28,13 @@ export class UserProfileComponent {
       email: new FormControl(null, [
         Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,10}$/)
       ]),
+      password: new FormControl(null, [
+        Validators.required,
+        Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)
+      ])
     })
+
+    
   }
 
   ngOnInit(){
@@ -36,7 +42,7 @@ export class UserProfileComponent {
       const user = await this.userService.getProfile();
       
       this.userId = params['userId'];
-      const obj = { username: user.username, email: user.email };
+      const obj = { username: user.username, email: user.email, password: user.password };
       this.formulario.setValue(obj);
       
 
@@ -48,9 +54,11 @@ export class UserProfileComponent {
 
   async onSubmit(){
     const response = await this.userService.updateById(this.userId, this.formulario.value);
-   
+    console.log(response);
   }
+}
 
   
 
-}
+  
+
