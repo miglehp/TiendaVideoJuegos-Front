@@ -1,44 +1,52 @@
 import { Component, inject } from '@angular/core';
 import { Game } from 'src/app/interfaces/game.interface';
 import { BasketService } from 'src/app/services/basket.service';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-basket-page',
   templateUrl: './basket-page.component.html',
-  styleUrls: ['./basket-page.component.scss']
+  styleUrls: ['./basket-page.component.scss'],
 })
 export class BasketPageComponent {
+  basketService = inject(BasketService);
+  orderService = inject(OrderService);
 
-  
+  games: Game[];
+  precioFinal: number;
+  gamesId: number[];
 
-basketService = inject(BasketService);
+  constructor() {
+    this.games = [];
+    this.precioFinal = 0;
+    this.gamesId = [];
+  }
 
-games: Game[];
-precioFinal: number;
-  
+  ngOnInit() {
+    this.games = this.basketService.getAll();
+  }
 
-constructor(){
-  this.games = [];
-  this.precioFinal = 0;
-}
+  onClickEliminar(indice: number) {
+    this.basketService.deleteGame(indice);
+  }
 
-ngOnInit() {
-  this.games = this.basketService.getAll()
-  
-}
+  onClickAddGame($event: Game) {
+    this.games = this.basketService.create($event);
 
-onClickEliminar(indice: number) {
-  this.basketService.deleteGame(indice)
-}
+    return this.games;
+  }
 
-onClickAddGame($event: Game) {
-  const cesta = this.basketService.create($event);
-}
+  getTotalPrice(): Number {
+    this.precioFinal = this.basketService.precioAcumulado();
 
-getTotalPrice(): Number{
-  this.precioFinal = this.basketService.precioAcumulado();
+    return this.precioFinal;
+  }
 
-  return this.precioFinal;
-}
-
+  onClickComprar() {
+    for (let game of this.games) {
+      this.gamesId.push(game.id);
+    }
+    const compra = this.orderService.crearPedido(this.gamesId);
+    return compra;
+  }
 }

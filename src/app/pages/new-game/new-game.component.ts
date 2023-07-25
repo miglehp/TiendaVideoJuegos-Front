@@ -47,6 +47,12 @@ export class NewGameComponent {
     // Inserción correcta
     this.router.navigate(['/games']);
   }
+  registrarJuego() {
+    this.router.navigate(['/gameList']);
+  }
+  onClick() {
+    const response = this.gameService.registro(this.formulario.value);
+  }
 
   checkError(field: string, error: string) {
     return (
