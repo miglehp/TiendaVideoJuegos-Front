@@ -53,4 +53,15 @@ export class GameService {
         `${this.baseUrl}/genre/${genre}/title/${title}/paginate/${page}`
       )
     );
+  deleteById(gameId: string) {
+    return firstValueFrom(
+      this.httpClient.delete<any>(`${this.baseUrl}/${gameId}`)
+    );
+  }
+
+  create(formValue: any): Promise<Game | any> {
+    return firstValueFrom(
+      this.httpClient.post<Game | any>(this.baseUrl + '/insert', formValue)
+    );
+  }
 }

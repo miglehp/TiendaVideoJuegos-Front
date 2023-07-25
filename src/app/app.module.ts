@@ -23,6 +23,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { BasketService } from './services/basket.service';
 import { DashboardComponent } from './pages/administrador/dashboard/dashboard.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { EditGameComponent } from './pages/edit-game/edit-game.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     Error404Component,
     DashboardComponent,
     LoginComponent,
+    EditGameComponent,
   ],
   imports: [
     BrowserModule,

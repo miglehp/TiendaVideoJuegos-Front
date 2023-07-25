@@ -2,8 +2,8 @@
 <button class="btn btn-outline-primary mb-2" [routerLink]="['/gameList']">
     Go back
   </button>
-<h2>New Game</h2>
-<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+<h2>Edit Game</h2>
+<form [formGroup]="formulario">
     <div class="mb-3">
         <div class="mb-3">
             <label class="form-label">Name</label>
@@ -115,8 +115,5 @@
         <input type="text" class="form-control" formControlName="support_info_email">
     </div>
     
-    <input class="boton" type="submit" value="Enviar" [disabled]="!formulario.valid">
+   <!--  <input class="boton" type="submit" value="Enviar" (click)="onClick()" [disabled]="!formulario.valid"> -->
 </form>
-
-
-
