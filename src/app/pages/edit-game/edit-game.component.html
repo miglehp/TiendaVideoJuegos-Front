@@ -1,0 +1,119 @@
+
+<button class="btn btn-outline-primary mb-2" [routerLink]="['/gameList']">
+    Go back
+  </button>
+<h2>Edit Game</h2>
+<form [formGroup]="formulario">
+    <div class="mb-3">
+        <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" formControlName="name">
+            <p class="error" *ngIf="checkError('name', 'required')">
+                Name is required
+            </p>   
+        </div>
+
+        <label class="form-label">Detailed description</label>
+        <input type="text" class="form-control" formControlName="detailed_description">
+        <p class="error" *ngIf="checkError('detailed_description', 'required')">
+            Description is required
+        </p>
+        <p class="error" *ngIf="checkError('detailed_description', 'minlength')">
+            Minimum characteres is 3
+        </p>
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label">About the game</label>
+        <input type="text" class="form-control" formControlName="about_the_game">
+        <p class="error" *ngIf="checkError('about_the_game', 'required')">
+            Description is required
+        </p>     
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Short description</label>
+        <input type="text" class="form-control" formControlName="short_description">
+        <p class="error" *ngIf="checkError('short_description', 'required')">
+            Description is required
+        </p>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Header image</label>
+        <input type="text" class="form-control" formControlName="header_image">
+        <p class="error" *ngIf="checkError('header_image', 'required')">
+            Image is required
+        </p>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Capsule image</label>
+        <input type="text" class="form-control" formControlName="capsule_image">
+        <p class="error" *ngIf="checkError('capsule_image', 'required')">
+            Image is required
+        </p>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Capsule imagev5</label>
+        <input type="text" class="form-control" formControlName="capsule_imagev5">
+        <p class="error" *ngIf="checkError('capsule_imagev5', 'required')">
+            Image is required
+        </p>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Website</label>
+        <input type="text" class="form-control" formControlName="website">      
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Pc requirements minimum</label>
+        <input type="text" class="form-control" formControlName="pc_requirements_minimum">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Pc requirements recommended</label>
+        <input type="text" class="form-control" formControlName="pc_requirements_recommended">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Mac requirements</label>
+        <input type="text" class="form-control" formControlName="mac_requirements">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Linux requirements</label>
+        <input type="text" class="form-control" formControlName="linux_requirements">
+
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Developers</label>
+        <input type="text" class="form-control" formControlName="developers">
+        <p class="error" *ngIf="checkError('developers', 'required')">
+            Input required
+        </p>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Publishers</label>
+        <input type="text" class="form-control" formControlName="publishers">
+        <p class="error" *ngIf="checkError('publishers', 'required')">
+            Input required
+        </p>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">price</label>
+        <input type="text" class="form-control" formControlName="price">
+        <p class="error" *ngIf="checkError('price', 'required')">
+            Price is required
+        </p>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Release date</label>
+        <input type="date" class="form-control" formControlName="release_date">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Support info url</label>
+        <input type="text" class="form-control" formControlName="support_info_url">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Support info email</label>
+        <input type="text" class="form-control" formControlName="support_info_email">
+    </div>
+    
+   <!--  <input class="boton" type="submit" value="Enviar" (click)="onClick()" [disabled]="!formulario.valid"> -->
+</form>

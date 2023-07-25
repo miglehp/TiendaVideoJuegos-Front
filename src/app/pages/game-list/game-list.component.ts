@@ -25,11 +25,10 @@ export class GameListComponent {
   closePages: number[];
   maxPages: number | undefined;
 
-  activeFilter:
-    | {
-        genre: string;
-        title: string;
-      };
+  activeFilter: {
+    genre: string;
+    title: string;
+  };
 
   constructor() {
     this.currentPage = 1;
@@ -38,9 +37,9 @@ export class GameListComponent {
     this.genres = [];
 
     this.activeFilter = {
-      genre:'',
-      title: ''
-    }
+      genre: '',
+      title: '',
+    };
 
     this.filtros = new FormGroup({
       title: new FormControl(null),
@@ -161,4 +160,8 @@ export class GameListComponent {
       this.setGames();
     }
   };
+  async onClickDelete(gameId: any) {
+    const response = await this.gamesService.deleteById(gameId);
+    this.onClickGoToPage(this.currentPage);
+  }
 }

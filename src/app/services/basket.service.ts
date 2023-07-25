@@ -5,12 +5,9 @@ import { Game } from '../interfaces/game.interface';
   providedIn: 'root',
 })
 export class BasketService {
-
   arrGames: Game[];
 
-
   constructor() {
-    
     this.arrGames = [];
   }
 
@@ -37,11 +34,11 @@ export class BasketService {
   }
 
   precioAcumulado() {
-    let precio = 0
+    let precio = 0;
     for (let game of this.arrGames) {
-      precio += game.price; 
+      precio += game.price;
     }
     return precio;
   }
-  
+
 }

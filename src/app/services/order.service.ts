@@ -14,9 +14,7 @@ export class OrderService {
   }
 
   obtenerUltimosPedidos(): Promise<any> {
-    return firstValueFrom (
-      this.httpClient.get<any>(`${this.baseUrl}`)
-    );
+    return firstValueFrom(this.httpClient.get<any>(`${this.baseUrl}`));
   }
 
   actualizarEstadoPedido(pedidoId: number, nuevoEstado: string): Promise<any> {
@@ -28,10 +26,7 @@ export class OrderService {
 
   crearPedido(arrGames: number[]) {
     return firstValueFrom(
-      this.httpClient.post(`${this.baseUrl}/new`, {games: arrGames})
+      this.httpClient.post(`${this.baseUrl}/new`, { games: arrGames })
     );
   }
-
-  
-
 }

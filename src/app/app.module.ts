@@ -23,6 +23,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { BasketService } from './services/basket.service';
 import { DashboardComponent } from './pages/administrador/dashboard/dashboard.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { EditGameComponent } from './pages/edit-game/edit-game.component';
 import { OrdersByUserComponent } from './pages/orders-by-user/orders-by-user.component';
 
 @NgModule({
@@ -44,17 +45,18 @@ import { OrdersByUserComponent } from './pages/orders-by-user/orders-by-user.com
     Error404Component,
     DashboardComponent,
     LoginComponent,
+    EditGameComponent,
     OrdersByUserComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

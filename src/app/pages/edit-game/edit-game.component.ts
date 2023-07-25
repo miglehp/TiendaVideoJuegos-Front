@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { GameService } from 'src/app/services/game.service';
 
 @Component({
-  selector: 'app-new-game',
-  templateUrl: './new-game.component.html',
-  styleUrls: ['./new-game.component.scss'],
+  selector: 'app-edit-game',
+  templateUrl: './edit-game.component.html',
+  styleUrls: ['./edit-game.component.scss'],
 })
-export class NewGameComponent {
+export class EditGameComponent {
   formulario: FormGroup;
   gameService = inject(GameService);
   router = inject(Router);
@@ -34,24 +34,6 @@ export class NewGameComponent {
       support_info_url: new FormControl(),
       support_info_email: new FormControl(),
     });
-  }
-  async onSubmit() {
-    const response = await this.gameService.create(this.formulario.value);
-
-    if (response.fatal) {
-      // Error en la inserción
-      console.log(response.fatal);
-      return alert('Error en la inserción. Revisa');
-    }
-
-    // Inserción correcta
-    this.router.navigate(['/games']);
-  }
-  registrarJuego() {
-    this.router.navigate(['/gameList']);
-  }
-  onClick() {
-    const response = this.gameService.registro(this.formulario.value);
   }
 
   checkError(field: string, error: string) {

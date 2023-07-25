@@ -1,9 +1,12 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
 <div class="container">
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid d-flex justify-content-between">
       <div>
-        <a class="navbar-brand" href="#">TiendaOnline</a>
+        <a class="navbar-brand" href="#">SpotiGame</a>
       </div>
       <div>
         <button
@@ -29,13 +32,17 @@
             <a class="nav-link fa-solid fa-gamepad" routerLink="gameList"></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fa-solid fa-cart-shopping" routerLink="basketPage"></a>
+            <a class="nav-link fa-solid fa-cart-shopping" routerLink="basketPage" *ngIf="userService.isLogged()"></a>
+            <!-- <span id="cart_menu_num" data-action="cart-can" class="badge rounded-circle">5</span> -->
           </li>
           <li class="nav-item">
-            <a class="nav-link fa-solid fa-user" routerLink="login"></a>
+            <a class="nav-link fa-solid fa-user" routerLink="login"*ngIf="!userService.isLogged()" ></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fa-solid fa-id-card" routerLink="userProfile"></a>
+            <a class="nav-link fa-solid fa-id-card" routerLink="userProfile"*ngIf="userService.isLogged()"></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fa-solid fa-right-from-bracket" routerLink="home" *ngIf="userService.isLogged()" (click)="onClickLogout()"></a>
           </li>
         </ul>
       </div>
