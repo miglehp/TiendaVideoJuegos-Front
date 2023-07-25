@@ -34,8 +34,8 @@ const routes: Routes = [
   { path: 'createForm', component: CreateFormComponent },
   {path: 'login', component: LoginComponent},
   { path: 'updateForm', component: UpdateFormComponent },
-  {path: 'ordersByUser', component: OrdersByUserComponent},
-  { path: '**', component: Error404Component },
+  {path: 'dashboard', component: DashboardComponent},
+  { path: '**', component: Error404Component }
 ];
 
 @NgModule({
