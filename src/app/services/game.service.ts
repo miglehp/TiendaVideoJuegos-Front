@@ -53,6 +53,7 @@ export class GameService {
         `${this.baseUrl}/genre/${genre}/title/${title}/paginate/${page}`
       )
     );
+
   deleteById(gameId: string) {
     return firstValueFrom(
       this.httpClient.delete<any>(`${this.baseUrl}/${gameId}`)

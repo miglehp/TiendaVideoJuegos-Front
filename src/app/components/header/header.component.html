@@ -36,7 +36,7 @@
             <a class="nav-link fa-solid fa-id-card" routerLink="userProfile"*ngIf="userService.isLogged()"></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fa-solid fa-right-from-bracket" routerLink="home" *ngIf="userService.isLogged()"></a>
+            <a class="nav-link fa-solid fa-right-from-bracket" routerLink="home" *ngIf="userService.isLogged()" (click)="onClickLogout()"></a>
           </li>
         </ul>
       </div>
