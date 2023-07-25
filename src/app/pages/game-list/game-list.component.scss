@@ -1,1 +1,21 @@
-@import '../../../variables.scss';
+@import "../../../variables.scss";
+
+button.active.disabled {
+  color: $text-color-dark;
+}
+
+h5 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+li.page-item {
+  button.page-link {
+    font-size: 1rem;
+    @media screen and (max-width: 768px) {
+      font-size: 0.9rem;
+      padding: 0.2rem 0.5rem;
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginComponent {
 
+  router = inject(Router);
   formulario: FormGroup;
   userService = inject(UserService);
 
@@ -41,6 +43,8 @@ export class LoginComponent {
     console.log(response);
 
     const tokenInfo = this.userService.getDecodedAccessToken(response.token);
+
+    this.router.navigate(['/home']);
 
   }
 

@@ -1,98 +1,113 @@
 <div class="container">
-<div class="row">
-  <div class="col-12 col-md-2">
-    <form class="mb-3">
-      <label for="titleSearch" class="form-label">Title</label>
-      <div class="mb-3">
-        <input type="search" class="form-control" id="titleSearch" aria-describedby="emailHelp" placeholder="Game title to search...">
-      </div>
-      <div class="mb-3">
-        <select name="genres" id="genres" class="form-select">
-          <option value="" selected>Select genre</option>
-          <option value=""></option>
-        </select>
-      </div>
-      <button type="submit" class="btn btn-outline-primary" >Submit</button>
-    </form>
-  </div>
-  <div class="col-12 col-md-10">
-    <div class="row">
-      <nav aria-label="Page navigation" *ngIf="maxPages">
-        <ul class="pagination justify-content-center">
-          <li class="page-item" [ngClass]="{ disabled: currentPage === 1 }">
-            <button
-              class="page-link"
-              [disabled]="currentPage === 1"
-              (click)="onClickGoToPage(1)"
-            >
-              First
-            </button>
-          </li>
-          <li
-            class="page-item disabled"
-            [ngClass]="{ disabled: currentPage === 1 }"
+  <div class="row">
+    <div class="col-12 col-md-2">
+      <form class="mb-3" [formGroup]="filtros" (ngSubmit)="onSubmitFiltros()">
+        <label for="titleSearch" class="form-label">Title</label>
+        <div class="mb-3">
+          <input
+            type="search"
+            class="form-control"
+            id="titleSearch"
+            formControlName="title"
+            placeholder="Game title to search..."
+          />
+        </div>
+        <div class="mb-3">
+          <select
+            formControlName="genre"
+            id="genres"
+            class="form-select"
           >
-            <button
-              class="page-link"
-              [disabled]="currentPage === 1"
-              (click)="onClickGoToPage(currentPage - 1)"
-            >
-              Previous
-            </button>
-          </li>
-          <li class="page-item" *ngFor="let page of closePages">
-            <button
-              class="page-link"
-              [ngClass]="{ active: page === currentPage }"
-              [disabled]="page === currentPage"
-              (click)="onClickGoToPage(page)"
-            >
-              {{ page }}
-            </button>
-          </li>
-          <li
-            class="page-item"
-            [ngClass]="{ disabled: currentPage === maxPages }"
-          >
-            <button
-              class="page-link"
-              [disabled]="currentPage === maxPages"
-              (click)="onClickGoToPage(currentPage + 1)"
-            >
-              Next
-            </button>
-          </li>
-          <li
-            class="page-item"
-            [ngClass]="{ disabled: currentPage === maxPages }"
-          >
-            <button
-              class="page-link"
-              [disabled]="currentPage === maxPages"
-              (click)="onClickGoToPage(maxPages)"
-            >
-              Last
-            </button>
-          </li>
-        </ul>
-      </nav>
+            <option value='' selected>Select genre</option>
+            <option [value]="genre.description" *ngFor="let genre of genres">
+              {{ genre.description | titlecase }}
+            </option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-outline-primary">Submit</button>
+      </form>
     </div>
-    <div class="row">
-      <div class="col-12 col-md-4" *ngFor="let game of games">
-        <div class="card-body px-5">
-          <h5>{{ game.name }}</h5>
-          <div class="imagen">
-            <img [src]="game.capsule_image" />
+    <div class="col-12 col-md-10">
+      <div class="row">
+        <nav aria-label="Page navigation" *ngIf="maxPages">
+          <ul class="pagination justify-content-center">
+            <li class="page-item" [ngClass]="{ disabled: currentPage === 1 }">
+              <button
+                class="page-link"
+                [disabled]="currentPage === 1"
+                (click)="onClickGoToPage(1)"
+              >
+                First
+              </button>
+            </li>
+            <li
+              class="page-item disabled"
+              [ngClass]="{ disabled: currentPage === 1 }"
+            >
+              <button
+                class="page-link"
+                [disabled]="currentPage === 1"
+                (click)="onClickGoToPage(currentPage - 1)"
+              >
+                Prev
+              </button>
+            </li>
+            <li class="page-item" *ngFor="let page of closePages">
+              <button
+                class="page-link"
+                [ngClass]="{
+                  active: page === currentPage,
+                  disabled: pageDisabler(page)
+                }"
+                [disabled]="pageDisabler(page)"
+                (click)="onClickGoToPage(page)"
+              >
+                {{ page }}
+              </button>
+            </li>
+            <li
+              class="page-item"
+              [ngClass]="{ disabled: currentPage === maxPages }"
+            >
+              <button
+                class="page-link"
+                [disabled]="currentPage === maxPages"
+                (click)="onClickGoToPage(currentPage + 1)"
+              >
+                Next
+              </button>
+            </li>
+            <li
+              class="page-item"
+              [ngClass]="{ disabled: currentPage === maxPages }"
+            >
+              <button
+                class="page-link"
+                [disabled]="currentPage === maxPages"
+                (click)="onClickGoToPage(maxPages)"
+              >
+                Last
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-4" *ngFor="let game of games">
+          <div class="card-body px-5">
+            <h5>{{ game.name }}</h5>
+            <div class="imagen">
+              <img [src]="game.capsule_image" />
+            </div>
+            <button
+              class="btn btn-outline-primary mt-2 mb-3"
+              [routerLink]="['/gameDetail', game.id]"
+            >
+              More details
+            </button>
           </div>
-          <button
-            class="btn btn-outline-primary mt-2"
-            [routerLink]="['/gameDetail', game.id]"
-          >
-            Ver detalles
-          </button>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>

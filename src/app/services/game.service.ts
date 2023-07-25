@@ -32,4 +32,25 @@ export class GameService {
     firstValueFrom(
       this.httpClient.get<Game[]>(this.baseUrl + '/paginate/' + page)
     );
+
+  getGamesByGenreAndPage = (genre: string, page: number = 1) =>
+    firstValueFrom(
+      this.httpClient.get(`${this.baseUrl}/genre/${genre}/paginate/${page}`)
+    );
+
+  getGamesByTitleAndPage = (title: string, page: number = 1) =>
+    firstValueFrom(
+      this.httpClient.get(`${this.baseUrl}/title/${title}/paginate/${page}`)
+    );
+
+  getGamesByGenreAndTitleAndPage = (
+    genre: string,
+    title: string,
+    page: number = 1
+  ) =>
+    firstValueFrom(
+      this.httpClient.get(
+        `${this.baseUrl}/genre/${genre}/title/${title}/paginate/${page}`
+      )
+    );
 }
