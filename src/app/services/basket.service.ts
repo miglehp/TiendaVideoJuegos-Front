@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Game } from '../interfaces/game.interface';
 
 @Injectable({
@@ -40,8 +40,4 @@ export class BasketService {
     }
     return precio;
   }
-  // Asi es el formato que debe tener para crear un pedido
-  /*   {
-  "games": [1, 3, 5, 6]
-} */
 }

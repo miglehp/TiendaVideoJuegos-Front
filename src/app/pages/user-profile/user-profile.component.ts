@@ -20,10 +20,22 @@ export class UserProfileComponent {
 
     this.formulario = new FormGroup({
       username: new FormControl(),
-      password: new FormControl(),
-      email: new FormControl(),
       birth_date: new FormControl(),
       profile_picture: new FormControl(),
+      username: new FormControl(null, [
+        Validators.pattern(
+          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
+        ),
+      ]),
+      email: new FormControl(null, [
+        Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,10}$/),
+      ]),
+      password: new FormControl(null, [
+        Validators.required,
+        Validators.pattern(
+          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
+        ),
+      ]),
     });
   }
 
