@@ -15,6 +15,7 @@ import { DashboardComponent } from './pages/administrador/dashboard/dashboard.co
 import { LoginGuard } from './guards';
 import { LoginComponent } from './pages/login/login.component';
 import { EditGameComponent } from './pages/edit-game/edit-game.component';
+import { OrdersByUserComponent } from './pages/orders-by-user/orders-by-user.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'createForm', component: CreateFormComponent },
   { path: 'login', component: LoginComponent },
   { path: 'updateForm', component: UpdateFormComponent },
+  { path: 'ordersByUser', component: OrdersByUserComponent },
   { path: '**', component: Error404Component },
 ];
 

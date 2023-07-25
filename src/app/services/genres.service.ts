@@ -14,8 +14,9 @@ export class GenresService {
     this.baseUrl = 'http://localhost:3000/api/games/genre';
   }
 
-  getAll = (): Promise<Genre[]> => firstValueFrom(this.httpClient.get<Genre[]>(this.baseUrl));
+  getAll = (): Promise<Genre[]> =>
+    firstValueFrom(this.httpClient.get<Genre[]>(this.baseUrl));
 
-  getGenresFromGame = (gameId: number): Promise<Genre[]> => firstValueFrom(this.httpClient.get<Genre[]>(`${this.baseUrl}/${gameId}`));
-
+  getGenresFromGame = (gameId: number): Promise<Genre[]> =>
+    firstValueFrom(this.httpClient.get<Genre[]>(`${this.baseUrl}/${gameId}`));
 }

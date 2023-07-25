@@ -13,10 +13,9 @@ import { BasketService } from 'src/app/services/basket.service';
 })
 export class GameDetailComponent {
   private gamesService = inject(GameService);
-  private basketService = inject(BasketService)
+  private basketService = inject(BasketService);
   private screenshotServ = inject(ScreenshotService);
   private activatedRoute = inject(ActivatedRoute);
-
 
   game: Game | undefined;
   screenshots: Screenshot[];
@@ -28,7 +27,9 @@ export class GameDetailComponent {
   ngOnInit() {
     this.activatedRoute.params.subscribe(async (params) => {
       this.game = await this.gamesService.getById(parseInt(params['gameId']));
-      this.screenshots = await this.screenshotServ.getScreenshotsById(parseInt(params['gameId']));
+      this.screenshots = await this.screenshotServ.getScreenshotsById(
+        parseInt(params['gameId'])
+      );
     });
   }
 
@@ -36,5 +37,4 @@ export class GameDetailComponent {
     const basket = await this.basketService.create(this.game!);
     console.log(basket);
   }
-
 }

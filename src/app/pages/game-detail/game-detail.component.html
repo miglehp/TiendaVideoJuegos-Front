@@ -49,7 +49,9 @@
         </div>
         <div class="col-12 col-md-4">
           <div class="mt-2 mb-3 d-flex align-items-center">
-            <button class="btn btn-outline-primary" (click)="onClickAddGame()">Add to cart</button>
+            <button class="btn btn-outline-primary" (click)="onClickAddGame()">
+              Add to cart
+            </button>
             <div class="px-2">at {{ game.price }}€</div>
           </div>
           <p></p>
@@ -57,11 +59,17 @@
           <p><strong>Publisher(s):</strong> {{ game.publishers }}</p>
           <p
             *ngIf="game.linux_requirements"
-            [innerHTML]="'<strong>Linux requirements:</strong> <br />' + game.linux_requirements"
+            [innerHTML]="
+              '<strong>Linux requirements:</strong> <br />' +
+              game.linux_requirements
+            "
           ></p>
           <p
             *ngIf="game.mac_requirements"
-            [innerHTML]="'<strong>MAC requirements:</strong> <br />' + game.mac_requirements"
+            [innerHTML]="
+              '<strong>MAC requirements:</strong> <br />' +
+              game.mac_requirements
+            "
           ></p>
         </div>
       </div>
@@ -69,12 +77,12 @@
         <div class="col-12">
           <div>
             <p
-            *ngIf="game.detailed_description"
+              *ngIf="game.detailed_description"
               class="description"
               [innerHTML]="'<br />' + game.detailed_description"
             ></p>
             <p
-            *ngIf="game.website"
+              *ngIf="game.website"
               [innerHTML]="
                 'Website: <a href=' +
                 game.website +
