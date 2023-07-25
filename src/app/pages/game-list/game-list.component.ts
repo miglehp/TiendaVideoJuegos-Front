@@ -160,4 +160,7 @@ export class GameListComponent {
       this.setGames();
     }
   };
+  async onClick(gameId: any) {
+    const response = await this.gamesService.deleteById(gameId);
+  }
 }

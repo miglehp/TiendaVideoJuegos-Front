@@ -53,4 +53,12 @@ export class GameService {
         `${this.baseUrl}/genre/${genre}/title/${title}/paginate/${page}`
       )
     );
+
+
+  create(formValue: any): Promise<Game | any> {
+    return firstValueFrom(
+      this.httpClient.post<Game | any>(this.baseUrl + '/insert', formValue)
+    );
+  }
+
 }

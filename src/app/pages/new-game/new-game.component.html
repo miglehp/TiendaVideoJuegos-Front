@@ -1,3 +1,8 @@
+<button class="btn btn-outline-primary mb-2" [routerLink]="['/gameList']">
+    Go back
+  </button>
+<h2>New Game</h2>
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
 <h2>Nuevo producto</h2>
 <form [formGroup]="formulario">
   <div class="mb-3">
@@ -22,7 +27,43 @@
       Minimum characteres is 3
     </p>
   </div>
-
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Developers</label>
+        <input type="text" class="form-control" formControlName="developers">
+        <p class="error" *ngIf="checkError('developers', 'required')">
+            Input required
+        </p>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Publishers</label>
+        <input type="text" class="form-control" formControlName="publishers">
+        <p class="error" *ngIf="checkError('publishers', 'required')">
+            Input required
+        </p>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">price</label>
+        <input type="text" class="form-control" formControlName="price">
+        <p class="error" *ngIf="checkError('price', 'required')">
+            Price is required
+        </p>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Release date</label>
+        <input type="date" class="form-control" formControlName="release_date">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Support info url</label>
+        <input type="text" class="form-control" formControlName="support_info_url">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Support info email</label>
+        <input type="text" class="form-control" formControlName="support_info_email">
+    </div>
+    
+    <input class="boton" type="submit" value="Enviar" [disabled]="!formulario.valid">
+</form>
   <div class="mb-3">
     <label class="form-label">About the game</label>
     <input type="text" class="form-control" formControlName="about_the_game" />
@@ -42,7 +83,6 @@
       Description is required
     </p>
   </div>
-
   <div class="mb-3">
     <label class="form-label">Header image</label>
     <input type="text" class="form-control" formControlName="header_image" />

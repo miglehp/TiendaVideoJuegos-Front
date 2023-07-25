@@ -19,12 +19,14 @@ export class UserProfileComponent {
     this.userId = 0;
 
     this.formulario = new FormGroup({
+      username: new FormControl(),
+      birth_date: new FormControl(),
+      profile_picture: new FormControl(),
       username: new FormControl(null, [
         Validators.pattern(
           /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
         ),
       ]),
-
       email: new FormControl(null, [
         Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,10}$/),
       ]),
@@ -44,8 +46,10 @@ export class UserProfileComponent {
       this.userId = params['userId'];
       const obj = {
         username: user.username,
-        email: user.email,
         password: user.password,
+        email: user.email,
+        birth_date: user.birth_date,
+        profile_picture: user.profile_picture,
       };
       this.formulario.setValue(obj);
     });
@@ -58,6 +62,5 @@ export class UserProfileComponent {
       this.userId,
       this.formulario.value
     );
-    console.log(response);
   }
 }
