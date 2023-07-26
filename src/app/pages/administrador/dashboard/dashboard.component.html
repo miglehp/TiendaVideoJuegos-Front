@@ -13,13 +13,6 @@
         <td>{{ pedido.fecha }}</td>
         <td>
             {{ pedido.estado }}
-        <select (change)="onChange($event)">
-            <option value="pendiente">Pendiente</option>
-            <option value="preparacion">En preparación</option>
-            <option value="enviado">Enviado</option>
-            <option value="cancelado">Cancelado</option>
-          </select>
-          <button (click)="actualizarEstado(pedido)">Actualizar Estado</button>
         </td>
       </tr>
     </tbody>
