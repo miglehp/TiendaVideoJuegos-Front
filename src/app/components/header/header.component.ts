@@ -12,17 +12,26 @@ export class HeaderComponent {
   esAdmin: Boolean;
   userToken: any;
   router = inject(Router);
+  token: string;
 
   constructor() {
+    this.token = '';
     this.esAdmin = false;
   }
 
   ngOnInit() {
     this.getToken();
+    this.setToken();
   }
 
   getToken() {
     this.userToken = localStorage.getItem('ecommerce_token');
+  }
+
+  setToken() {
+    if (localStorage.getItem('ecommerce_token')) {
+      this.token = localStorage.getItem('ecommerce_token')!;
+    }
   }
 
   onClickLogout() {
