@@ -5,7 +5,6 @@ import { UserService } from 'src/app/services/user.service';
 const LoginGuard = () => {
   const router = inject(Router);
   if (localStorage.getItem('ecommerce_token')) {
-    console.log(localStorage.getItem('ecommerce_token'));
     return true;
   } else {
     router.navigate(['/login']);
