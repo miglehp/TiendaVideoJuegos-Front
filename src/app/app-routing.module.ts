@@ -12,11 +12,10 @@ import { UpdateFormComponent } from './pages/update-form/update-form.component';
 import { NewGameComponent } from './pages/new-game/new-game.component';
 import { Error404Component } from './pages/error404/error404.component';
 import { DashboardComponent } from './pages/administrador/dashboard/dashboard.component';
-import { LoginGuard } from './guards';
+import { AdminGuard, LoginGuard } from './guards';
 import { LoginComponent } from './pages/login/login.component';
 import { EditGameComponent } from './pages/edit-game/edit-game.component';
 import { OrdersByUserComponent } from './pages/orders-by-user/orders-by-user.component';
-
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -26,19 +25,51 @@ const routes: Routes = [
     canActivate: [LoginGuard],
   },
   { path: 'home', component: HomeComponent },
-  { path: 'userProfile', component: UserProfileComponent },
+  {
+    path: 'userProfile',
+    component: UserProfileComponent,
+    canActivate: [LoginGuard],
+  },
   { path: 'gameDetail/:gameId', component: GameDetailComponent },
   { path: 'gameList', component: GameListComponent },
-  { path: 'newGame', component: NewGameComponent },
-  { path: 'editGame', component: EditGameComponent },
-  { path: 'basketPage', component: BasketPageComponent },
-  { path: 'orderList', component: OrderListComponent },
+  {
+    path: 'newGame',
+    component: NewGameComponent,
+    canActivate: [LoginGuard, AdminGuard],
+  },
+  {
+    path: 'editGame',
+    component: EditGameComponent,
+    canActivate: [LoginGuard, AdminGuard],
+  },
+  {
+    path: 'basketPage',
+    component: BasketPageComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'orderList',
+    component: OrderListComponent,
+    canActivate: [LoginGuard, AdminGuard],
+  },
   { path: 'orderDetail/:orderId', component: OrderDetailComponent },
   { path: 'createForm', component: CreateFormComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'updateForm', component: UpdateFormComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'ordersByUser', component: OrdersByUserComponent },
+  {
+    path: 'updateForm',
+    component: UpdateFormComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'ordersByUser',
+    component: OrdersByUserComponent,
+    canActivate: [LoginGuard],
+  },
   { path: '**', component: Error404Component },
 ];
 
