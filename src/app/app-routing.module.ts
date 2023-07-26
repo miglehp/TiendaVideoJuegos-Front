@@ -52,7 +52,11 @@ const routes: Routes = [
     component: OrderListComponent,
     canActivate: [LoginGuard, AdminGuard],
   },
-  { path: 'orderDetail/:orderId', component: OrderDetailComponent },
+  {
+    path: 'orderDetail/:orderId',
+    component: OrderDetailComponent,
+    canActivate: [LoginGuard],
+  },
   { path: 'createForm', component: CreateFormComponent },
   { path: 'login', component: LoginComponent },
   {
