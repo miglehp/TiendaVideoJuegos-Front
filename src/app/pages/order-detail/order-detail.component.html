@@ -1,1 +1,21 @@
+<button class="btn btn-outline-primary mb-2" [routerLink]="['/home']">
+    Go back
+  </button>
 
+<div class="container">
+  <div class="productos">
+    <div class="producto" *ngFor="let game of arrGames">
+      <img [src]="game.capsule_image" alt="" />
+      <p class="name">{{game.name}}</p>
+      <p class="price">Subtotal: {{game.price}}</p>
+      <button
+              class="btn btn-outline-primary mt-2 mb-3"
+              
+              [routerLink]="['/gameDetail', game.id]"
+            >
+              See game
+            </button>
+    </div>  
+  </div>
+</div>
+<h3 class="totalPrice">Total: {{ precioAcumulado().toFixed(2) }}€</h3>
