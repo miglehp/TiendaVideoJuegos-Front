@@ -38,7 +38,7 @@ const routes: Routes = [
     canActivate: [LoginGuard, AdminGuard],
   },
   {
-    path: 'editGame',
+    path: 'editGame/:gameId',
     component: EditGameComponent,
     canActivate: [LoginGuard, AdminGuard],
   },
