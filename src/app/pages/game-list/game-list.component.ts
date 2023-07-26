@@ -4,6 +4,7 @@ import { Game } from 'src/app/interfaces/game.interface';
 import { Genre } from 'src/app/interfaces/genre.interface';
 import { GameService } from 'src/app/services/game.service';
 import { GenresService } from 'src/app/services/genres.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-game-list',
@@ -13,6 +14,7 @@ import { GenresService } from 'src/app/services/genres.service';
 export class GameListComponent {
   private gamesService = inject(GameService);
   private genresService = inject(GenresService);
+  userService = inject(UserService);
 
   filtros: FormGroup;
 
@@ -25,12 +27,15 @@ export class GameListComponent {
   closePages: number[];
   maxPages: number | undefined;
 
+  token: string;
+
   activeFilter: {
     genre: string;
     title: string;
   };
 
   constructor() {
+    this.token = '';
     this.currentPage = 1;
     this.closePages = [];
     this.games = [];
@@ -50,6 +55,7 @@ export class GameListComponent {
   ngOnInit() {
     this.setGames();
     this.setGenres();
+    this.setToken();
   }
 
   pageDisabler = (page: number): boolean =>
@@ -163,5 +169,11 @@ export class GameListComponent {
   async onClickDelete(gameId: any) {
     const response = await this.gamesService.deleteById(gameId);
     this.onClickGoToPage(this.currentPage);
+  }
+
+  setToken() {
+    if (localStorage.getItem('ecommerce_token')) {
+      this.token = localStorage.getItem('ecommerce_token')!;
+    }
   }
 }
