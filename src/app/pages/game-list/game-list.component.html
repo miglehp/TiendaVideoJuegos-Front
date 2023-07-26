@@ -106,6 +106,7 @@
             <div class="imagen">
               <img [src]="game.capsule_image" />
             </div>
+            <p>{{game.price}} €</p>
             <button
               class="btn btn-outline-primary mt-2 mb-3"
               
@@ -117,7 +118,7 @@
             <button
               class="btn btn-outline-primary mt-2 mb-3 fa-solid fa-pen-to-square"
               
-              [routerLink]="['/editGame']" *ngIf="userService.esAdmin(this.token)"
+              [routerLink]="['/editGame', game.id]" *ngIf="userService.esAdmin(this.token)"
             >
            
             </button>
