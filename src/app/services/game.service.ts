@@ -65,4 +65,9 @@ export class GameService {
       this.httpClient.post<Game | any>(this.baseUrl + '/insert', formValue)
     );
   }
+  updateById(gameId: string, formValue: any): Promise<Game> {
+    return firstValueFrom(
+      this.httpClient.put<Game>(`${this.baseUrl}/${gameId}`, formValue)
+    );
+  }
 }
