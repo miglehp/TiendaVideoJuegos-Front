@@ -4,7 +4,7 @@ export interface User {
   password: string;
   email: string;
   active: boolean;
-  birth_date: string;
+  fecha_nacimiento: string;
   profile_picture: string;
   is_admin: boolean;
   validated: boolean;

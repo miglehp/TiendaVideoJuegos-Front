@@ -26,6 +26,11 @@ body {
     background-color: $primary-color-light !important;
     border-color: $primary-color-light !important;
   }
+
+  &:disabled {
+    color:  $primary-color-lighter !important;
+    border-color: $primary-color-lighter !important;
+  }
 }
 
 a {
