@@ -1,1 +1,12 @@
 @import "../../../variables.scss";
+
+img{
+   size: cover;
+   width: 50%;
+   
+}
+.navbar-brand{
+    
+    height: 80px;
+    overflow-y: hidden;
+}
