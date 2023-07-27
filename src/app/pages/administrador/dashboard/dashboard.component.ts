@@ -24,6 +24,5 @@ export class DashboardComponent implements OnInit {
     this.ultimosPedidos = (
       await this.orderService.obtenerPedidosUser()
     ).pedidos;
-    console.log(this.ultimosPedidos);
   }
 }
