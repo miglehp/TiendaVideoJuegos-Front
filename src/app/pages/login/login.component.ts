@@ -16,12 +16,7 @@ export class LoginComponent {
 
   constructor() {
     this.formulario = new FormGroup({
-      password: new FormControl(null, [
-        Validators.required,
-        Validators.pattern(
-          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
-        ),
-      ]),
+      password: new FormControl(null, [Validators.required]),
 
       email: new FormControl(null, [
         Validators.required,
