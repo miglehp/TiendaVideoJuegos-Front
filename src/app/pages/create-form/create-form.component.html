@@ -8,10 +8,10 @@
           <label class="form-label">Username</label>
           <input type="text" class="form-control" formControlName="username" />
           <p class="error" *ngIf="checkError('username', 'required')">
-            El username es requerido
+            Username is required
           </p>
           <p class="error" *ngIf="checkError('username', 'minlength')">
-            El username debe tener como mínimo 3 caracteres
+            Username must contain min 3 characteres
           </p>
         </div>
         <div class="mb-3">
@@ -22,34 +22,34 @@
             formControlName="password"
           />
           <p class="error" *ngIf="checkError('password', 'required')">
-            La password es requerido
+            Password is required
           </p>
           <p class="error" *ngIf="checkError('password', 'pattern')">
-            La password debe contener: mayúsculas, minúsculas y números
+            Password must contain: caps, lower and number
           </p>
         </div>
         <div class="mb-3">
           <label class="form-label">Email</label>
           <input type="text" class="form-control" formControlName="email" />
           <p class="error" *ngIf="checkError('email', 'required')">
-            El email es requerido
+            Email is required
           </p>
           <p class="error" *ngIf="checkError('email', 'pattern')">
-            El email debe ser válido
+            Email must be valid
           </p>
         </div>
         <div class="mb-3">
-          <label class="form-label">Fecha de nacimiento</label>
+          <label class="form-label">Birthdate</label>
           <input
             type="date"
             class="form-control"
             formControlName="fecha_nacimiento"
           />
           <p class="error" *ngIf="checkError('fecha_nacimiento', 'required')">
-            La fecha de nacimiento es requerida
+            Birthdate is required
           </p>
           <p class="error" *ngIf="checkError('dni', 'dnivalidator')">
-            La fecha de nacimiento es erronea
+            Birthdate is wrong
           </p>
         </div>
         <input
