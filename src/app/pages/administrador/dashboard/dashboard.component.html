@@ -1,20 +1,23 @@
-<table>
-    <thead>
-      <tr>
-        <th>Número de pedido</th>
-        <th>Fecha</th>
-        <th>Estado</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr *ngFor="let pedido of ultimosPedidos">
-        <td>{{ pedido.id }}</td>
-        <td>{{ pedido.fecha }}</td>
-        <td>
-            {{ pedido.estado }}
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div class="container">
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Número de pedido</th>
+          <th>Fecha</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
   
+      <tbody>
+        <tr *ngFor="let pedido of ultimosPedidos">
+          <td>{{ pedido.id }}</td>
+          <td>{{ pedido.fecha | date : "dd/MM/yyyy" }}</td>
+          <td>
+              {{ pedido.estado }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

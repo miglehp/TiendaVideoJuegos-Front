@@ -27,12 +27,12 @@
         <button type="submit" class="btn btn-outline-primary">Submit</button>
       </form>
       <button
-              class="btn btn-outline-primary mt-2 mb-3"
-              
-              [routerLink]="['/newGame']" *ngIf="userService.esAdmin(this.token)"
-            >
-              Add Game
-            </button>
+        class="btn btn-outline-primary mt-2 mb-3"
+        [routerLink]="['/newGame']"
+        *ngIf="userService.esAdmin(this.token)"
+      >
+        Add Game
+      </button>
     </div>
     <div class="col-12 col-md-10">
       <div class="row">
@@ -106,29 +106,27 @@
             <div class="imagen">
               <img [src]="game.capsule_image" />
             </div>
-            <p>{{game.price}} €</p>
-            <button
+            <p>{{ game.price }} €</p>
+            <div class="d-flex justify-content-between">
+              <button
               class="btn btn-outline-primary mt-2 mb-3"
-              
               [routerLink]="['/gameDetail', game.id]"
             >
               More details
             </button>
-            
-            <button
+            <div class="d-flex gap-2">
+              <button
               class="btn btn-outline-primary mt-2 mb-3 fa-solid fa-pen-to-square"
-              
-              [routerLink]="['/editGame', game.id]" *ngIf="userService.esAdmin(this.token)"
-            >
-           
-            </button>
+              [routerLink]="['/editGame', game.id]"
+              *ngIf="userService.esAdmin(this.token)"
+            ></button>
             <button
               class="btn btn-outline-primary mt-2 mb-3 fa-solid fa-trash"
-              (click)="onClickDelete(game.id)" *ngIf="userService.esAdmin(this.token)"
-            >
-            
-            </button>
-            
+              (click)="onClickDelete(game.id)"
+              *ngIf="userService.esAdmin(this.token)"
+            ></button>
+            </div>
+            </div>
           </div>
         </div>
       </div>
