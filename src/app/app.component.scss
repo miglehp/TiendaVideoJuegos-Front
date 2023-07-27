@@ -30,4 +30,8 @@ footer {
 
 .header-main {
   min-height: calc(100vh - 15rem);
+  padding-bottom: 5rem;
+  @media screen and (max-width: 767px) {
+    min-height: calc(100vh - 12.5rem);
+}
 }
