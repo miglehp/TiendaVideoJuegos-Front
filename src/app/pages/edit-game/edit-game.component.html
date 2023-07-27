@@ -1,0 +1,121 @@
+<div class="container">
+  <div class="row">
+    <div>
+      <button class="btn btn-outline-primary mb-2" [routerLink]="['/gameList']">
+        Go back
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2 col-12"></div>
+    <div class="col-md-8 col-12">
+      <h2>Edit Game</h2>
+      <form [formGroup]="formulario" (ngSubmit)="onSubmit()" class="mb-5 mt-4">
+        <div class="mb-3">
+          <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" formControlName="name" />
+          </div>
+
+          <label class="form-label">Detailed description</label>
+          <textarea
+            class="form-control"
+            formControlName="detailed_description"
+          ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">About the game</label>
+          <textarea
+            class="form-control"
+            formControlName="about_the_game"
+          ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Short description</label>
+          <textarea
+            class="form-control"
+            formControlName="short_description"
+          ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Header image</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="header_image"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Capsule image</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="capsule_image"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Capsule imagev5</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="capsule_imagev5"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Website</label>
+          <input type="text" class="form-control" formControlName="website" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Mac requirements</label>
+          <textarea
+            class="form-control"
+            formControlName="mac_requirements"
+          ></textarea>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Linux requirements</label>
+          <textarea
+            class="form-control"
+            formControlName="linux_requirements"
+          ></textarea>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Developers</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="developers"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Publishers</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="publishers"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">price</label>
+          <input type="text" class="form-control" formControlName="price" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Support info url</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="support_info_url"
+          />
+        </div>
+
+        <input class="btn btn-outline-primary" type="submit" value="Enviar" />
+      </form>
+    </div>
+    <div class="col-md-2 col-12"></div>
+  </div>
+</div>

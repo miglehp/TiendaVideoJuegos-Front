@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Actualizar Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pedido of ultimosPedidos">
+          <th scope="row">{{ pedido.id }}</th>
+          <td>{{ pedido.fecha | date : "dd/MM/yyyy" }}</td>
+          <td>
+            <div class="d-flex gap-5">
+              <select class="form-select" (change)="onChange($event)">
+                <option *ngFor="let option of estadoSelect" [value]="option" [selected]="pedido.estado === option">{{option | titlecase}}</option>
+              </select>
+              <button class="btn btn-outline-primary" (click)="actualizarEstado(pedido)">Update</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

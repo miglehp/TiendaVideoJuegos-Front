@@ -1,0 +1,25 @@
+form div {
+  padding: 5px;
+}
+.boton {
+  margin-left: 5px;
+  margin-bottom: 5px;
+  background-color: lightcoral;
+}
+
+input.ng-pristine {
+  border: 2px solid dodgerblue;
+}
+
+input.ng-valid.ng-touched {
+  border: 2px solid green;
+}
+
+input.ng-invalid.ng-touched {
+  border: 2px solid tomato;
+}
+
+.error {
+  color: tomato;
+  font-size: 10px;
+}

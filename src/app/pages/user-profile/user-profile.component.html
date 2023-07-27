@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row">
+    <div>
+      <button class="btn btn-outline-primary mb-2" [routerLink]="['/home']">
+        Go back
+      </button>
+    </div>
+    <div class="col-md-4 col-12"></div>
+    <div class="col-md-4 col-12">
+      <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label class="form-label">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="username"
+            [readOnly]="!edit"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            formControlName="email"
+            [readOnly]="!edit"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Birth date</label>
+          <input
+            type="date"
+            class="form-control"
+            formControlName="fecha_nacimiento"
+            [readOnly]="!edit"
+          />
+        </div>
+
+        <div class="d-flex justify-content-between">
+          <div>
+            <input
+              type="submit"
+              value="Save changes"
+              class="btn btn-outline-primary"
+              [disabled]="!edit"
+            />
+          </div>
+
+          <button
+            class="btn btn-outline-primary"
+            (click)="onClickChangeEdit()"
+            type="button"
+          >
+            {{ editText | titlecase }}
+          </button>
+        </div>
+      </form>
+      <button
+        class="btn btn-outline-primary mb-2 mt-2"
+        [routerLink]="['/dashboard']"
+      >
+        Check orders
+      </button>
+    </div>
+    <div class="col-md-4 col-12"></div>
+  </div>
+</div>

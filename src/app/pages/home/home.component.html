@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-1 col-12"></div>
+    <div class="col-md-10 col-12">
+     <div class="mb-5">
+      <h3 class="text-center mt-5 mb-5">
+        Welcome to SpotiGames
+      </h3>
+      <p class="home-text">
+        Your ultimate destination for the best gaming
+        experience! Discover a world of endless possibilities with our
+        cutting-edge gaming platform. Immerse yourself in a vast collection of
+        thrilling games, connect with fellow gamers through our vibrant
+        community, and unleash your competitive spirit in exhilarating
+        multiplayer battles.
+      </p>
+      <p class="home-text">
+        Whether you're into action, adventure, strategy, or
+        simulation, SpotiGames offers a diverse range of top-notch titles to
+        cater to every gaming preference.
+      </p>
+      <div class="d-flex justify-content-center mt-3">
+        <button class="btn btn-outline-primary fs-4" [routerLink]="['/gameList']">
+          browse games
+        </button>
+      </div>
+     </div>
+    </div>
+    <div class="col-md-1 col-12"></div>
+  </div>
+  <div class="row">
+    <h2>Suggested</h2>
+    <div class="carousel slide" data-bs-ride="carousel" id="gamesCarrousel">
+      <div class="carousel-inner">
+        <div
+          class="carousel-item"
+          *ngFor="let game of games; let i = index"
+          [ngClass]="{ active: i === 0 }"
+          (click)="onClickNavigate(game.id)"
+        >
+          <img [src]="game.header_image" class="d-block w-100" />
+          <div class="carousel-caption d-none d-md-block px-3">
+            <h5>{{ game.name }}</h5>
+            <p>{{ game.short_description }}</p>
+          </div>
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#gamesCarrousel"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#gamesCarrousel"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</div>

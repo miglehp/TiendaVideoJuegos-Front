@@ -1,0 +1,9 @@
+@import "../../../variables.scss";
+
+table * {
+  background-color: transparent;
+}
+
+tr:hover {
+  background-color: $secondary-color-lighter;
+}
