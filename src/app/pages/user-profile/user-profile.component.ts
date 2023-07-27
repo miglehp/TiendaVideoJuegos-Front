@@ -9,7 +9,6 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.scss'],
 })
-
 export class UserProfileComponent {
   activatedRoute = inject(ActivatedRoute);
   userService = inject(UserService);
@@ -32,36 +31,34 @@ export class UserProfileComponent {
   }
 
   ngOnInit() {
-    this.setUser()
+    this.setUser();
   }
 
-  setUser(){
-    this.activatedRoute.params.subscribe(async (params) => {
-      const user = await this.userService.getProfile();
-
-      this.userId = params['userId'];
-      const obj = {
-        username: user.username,
-        email: user.email,
-        fecha_nacimiento: formatDate(user.fecha_nacimiento, 'yyyy-MM-dd', 'en-US')
-      };
-      this.formulario.setValue(obj);
-      this.formulario.get('username')?.disable();
-      this.formulario.get('email')?.disable();
-      this.formulario.get('fecha_nacimiento')?.disable();
-    });
+  async setUser () {
+    const user = await this.userService.getProfile();
+    this.userId = user.id;
+    const obj = {
+      username: user.username,
+      email: user.email,
+      fecha_nacimiento: formatDate(
+        user.fecha_nacimiento,
+        'yyyy-MM-dd',
+        'en-US'
+      ),
+    };
+    this.formulario.setValue(obj);
+    this.formulario.get('username')?.disable();
+    this.formulario.get('email')?.disable();
+    this.formulario.get('fecha_nacimiento')?.disable();
   }
 
   async onSubmit() {
-    console.log(this.formulario.value)
-    await this.userService.updateById(
-      this.userId,
-      this.formulario.value
-    );
+    await this.userService.updateById(this.userId, this.formulario.value);
+    this.onClickChangeEdit();
   }
 
-  onClickChangeEdit(){
-    if(!this.edit){
+  onClickChangeEdit() {
+    if (!this.edit) {
       this.formulario.get('username')?.enable();
       this.formulario.get('email')?.enable();
       this.formulario.get('fecha_nacimiento')?.enable();
@@ -72,5 +69,4 @@ export class UserProfileComponent {
     }
     this.edit = !this.edit;
   }
-
 }

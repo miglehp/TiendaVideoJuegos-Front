@@ -6,6 +6,7 @@ import { Screenshot } from 'src/app/interfaces/screenshot.interface';
 import { ScreenshotService } from 'src/app/services/screenshot.service';
 import { BasketService } from 'src/app/services/basket.service';
 import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-game-detail',
@@ -39,6 +40,7 @@ export class GameDetailComponent {
   async onClickAddGame() {
     if (this.userService.isLogged()) {
       const basket = await this.basketService.create(this.game!);
+      Swal.fire('Game added successfully');
     } else {
       this.router.navigate(['/login']);
     }
