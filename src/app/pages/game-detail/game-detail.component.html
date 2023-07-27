@@ -3,7 +3,7 @@
     <button class="btn btn-outline-primary mb-2" [routerLink]="['/gameList']">
       Keep buying
     </button>
-    <button class="btn btn-outline-primary mb-2" [routerLink]="['/basketPage']">
+    <button class="btn btn-outline-primary mb-2" *ngIf="userService.isLogged()" [routerLink]="['/basketPage']">
       Go to Cart
     </button>
   </div>

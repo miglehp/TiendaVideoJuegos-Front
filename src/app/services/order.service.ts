@@ -42,12 +42,4 @@ export class OrderService {
       this.httpClient.get<any>(`${this.baseUrl}/id/${pedidoId}`)
     );
   }
-
-  precioAcumulado() {
-    let precio = 0;
-    for (let game of this.games) {
-      precio += game.price;
-    }
-    return precio;
-  }
 }
