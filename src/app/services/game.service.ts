@@ -54,7 +54,7 @@ export class GameService {
       )
     );
 
-  deleteById(gameId: string) {
+  deleteById(gameId: number) {
     return firstValueFrom(
       this.httpClient.delete<any>(`${this.baseUrl}/${gameId}`)
     );

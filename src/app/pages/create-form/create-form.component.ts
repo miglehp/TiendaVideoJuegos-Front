@@ -36,7 +36,10 @@ export class CreateFormComponent {
       foto_perfil: new FormControl(),
     });
   }
-  ngOnInit() {}
+
+  ngOnInit() {
+
+  }
 
   async onSubmit() {
     const response = await this.userService.create(this.formulario.value);
@@ -44,9 +47,20 @@ export class CreateFormComponent {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: response.fatal,
+        text: this.transformErrorMsg(response.fatal),
       });
     }
+  }
+
+  transformErrorMsg(errorMsg: string): string {
+    const duplicateKeyErrorPattern = /Duplicate entry '(.+)' for key '(.+)'/;
+    const mensajeError = errorMsg;
+  
+    if (duplicateKeyErrorPattern.test(mensajeError)) {
+      const [, valorDuplicado] = duplicateKeyErrorPattern.exec(mensajeError)!;
+      return `It seems that '${valorDuplicado}' is already in use. Please, use a different value.`;
+    }
+    return mensajeError;
   }
 
   checkError(field: string, error: string) {
