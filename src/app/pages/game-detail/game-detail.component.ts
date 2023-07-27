@@ -19,7 +19,7 @@ export class GameDetailComponent {
   private basketService = inject(BasketService);
   private screenshotServ = inject(ScreenshotService);
   private activatedRoute = inject(ActivatedRoute);
-  private userService = inject(UserService);
+  userService = inject(UserService);
 
   game: Game | undefined;
   screenshots: Screenshot[];
