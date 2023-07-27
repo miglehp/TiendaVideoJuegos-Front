@@ -1,7 +1,8 @@
 @import "./variables.scss";
 
 body {
-  background-color: $background-light;
+  background: rgb(253,231,255);
+  background: linear-gradient(220deg, rgba(253,231,255,1) 0%, rgba(254,255,247,1) 47%, rgb(255, 254, 211) 100%);
   color: $text-color-light;
 }
 
