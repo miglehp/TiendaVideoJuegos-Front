@@ -1,37 +1,13 @@
-.productos {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 10px;
-}
-
 .producto {
-  background-color: beige;
-  width: 20%;
-  border: 2px solid gray;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
+  max-width: 100vw;
 }
 
-.price {
-  color: rgb(126, 124, 124);
-  font-weight: 500;
-}
-
-.producto img {
-  width: 100%;
-  border: 1px solid black;
+img{
+  max-width: 85vw;
 }
 
 .name {
-  font-weight: 700;
-}
-
-.totalPrice {
-  color: #3a2a54;
-  position: absolute;
-  bottom: 70px;
-  right: 20px;
-  padding: 5px;
+  font-size: 1.2rem;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
 }

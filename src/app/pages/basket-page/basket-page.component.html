@@ -1,20 +1,33 @@
-<button class="btn btn-outline-primary mb-2" [routerLink]="['/gameList']">
-    Go back
-  </button>
-
 <div class="container">
-  <div class="productos">
-    <div class="producto" *ngFor="let game of games; let indice = index">
-      <img [src]="game.header_image" alt="" />
-      <p class="name">{{ game.name }}</p>
-      <p class="price">Subtotal: {{ game.price }}€</p>
-      <button class="btn btn-danger" (click)="onClickEliminar(indice)">
-        Remove
+  <div class="row">
+    <div>
+      <button class="btn btn-outline-primary mb-2" [routerLink]="['/gameList']">
+        Go back
       </button>
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-8 col-12">
+      <div class="d-flex">
+        <div class="productos">
+          <div class="producto mb-3 p-2" *ngFor="let game of games; let indice = index">
+            <img [src]="game.header_image" alt="" />
+            <p class="name"><strong>{{ game.name }}</strong></p>
+            <p class="price">Subtotal: {{ game.price }}€</p>
+            <button class="btn btn-danger" (click)="onClickEliminar(indice)">
+              Remove
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-12 mb-3">
+      <div>
+        <h3 class="totalPrice mb-2">Total: {{ getTotalPrice().toFixed(2) }}€</h3>
+        <button class="btn btn-outline-success" (click)="onClickComprar()">
+          BUY NOW
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
-<button class="btn btn-success" (click)="onClickComprar()">
-  <strong>BUY NOW</strong>
-</button>
-<h3 class="totalPrice">Total: {{ getTotalPrice().toFixed(2) }}€</h3>

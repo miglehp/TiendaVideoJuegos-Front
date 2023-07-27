@@ -13,8 +13,12 @@ export class OrderListComponent {
   userService = inject(UserService);
   orderService = inject(OrderService);
   nuevoEstado: string = '';
+  estadoSelect: string[];
 
-  constructor() {}
+  constructor() {
+    this.estadoSelect = ['pendiente', 'preparacion', 'enviado', 'cancelado']
+  }
+
   ngOnInit(): void {
     this.obtenerUltimosPedidos();
   }
