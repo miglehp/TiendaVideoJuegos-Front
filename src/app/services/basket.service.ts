@@ -14,6 +14,8 @@ export class BasketService {
   getAll(): Game[] {
     if (localStorage.getItem('basket')) {
       this.arrGames = JSON.parse(localStorage.getItem('basket')!);
+    } else {
+      this.arrGames = [];
     }
 
     return this.arrGames;
@@ -40,5 +42,4 @@ export class BasketService {
     }
     return precio;
   }
-
 }
