@@ -1,10 +1,11 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, inject } from '@angular/core';
 import { Game } from 'src/app/interfaces/game.interface';
 import { GameService } from 'src/app/services/game.service';
 import { Screenshot } from 'src/app/interfaces/screenshot.interface';
 import { ScreenshotService } from 'src/app/services/screenshot.service';
 import { BasketService } from 'src/app/services/basket.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-game-detail',
@@ -12,10 +13,12 @@ import { BasketService } from 'src/app/services/basket.service';
   styleUrls: ['./game-detail.component.scss'],
 })
 export class GameDetailComponent {
+  router = inject(Router);
   private gamesService = inject(GameService);
   private basketService = inject(BasketService);
   private screenshotServ = inject(ScreenshotService);
   private activatedRoute = inject(ActivatedRoute);
+  private userService = inject(UserService);
 
   game: Game | undefined;
   screenshots: Screenshot[];
@@ -34,7 +37,10 @@ export class GameDetailComponent {
   }
 
   async onClickAddGame() {
-    const basket = await this.basketService.create(this.game!);
-    console.log(basket);
+    if (this.userService.isLogged()) {
+      const basket = await this.basketService.create(this.game!);
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 }
