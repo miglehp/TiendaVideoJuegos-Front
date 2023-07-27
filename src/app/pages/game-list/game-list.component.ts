@@ -5,6 +5,7 @@ import { Genre } from 'src/app/interfaces/genre.interface';
 import { GameService } from 'src/app/services/game.service';
 import { GenresService } from 'src/app/services/genres.service';
 import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-game-list',
@@ -166,9 +167,26 @@ export class GameListComponent {
       this.setGames();
     }
   };
-  async onClickDelete(gameId: any) {
-    const response = await this.gamesService.deleteById(gameId);
-    this.onClickGoToPage(this.currentPage);
+
+  async onClickDelete(gameId: number) {
+    const result = await Swal.fire({
+      title: '¿Are you sure?',
+      text: 'This action will permanently delete this game from the database.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete',
+      cancelButtonText: 'Cancel',
+    });
+  
+    if (result.isConfirmed) {
+      try {
+        await this.gamesService.deleteById(gameId);
+        await Swal.fire('Deleting', 'The game has been deleted.', 'success');
+        this.onClickGoToPage(this.currentPage);
+      } catch (error: any) {
+        console.log(error.message);
+      }
+    }
   }
 
   setToken() {

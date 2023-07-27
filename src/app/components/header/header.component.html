@@ -6,51 +6,84 @@
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid d-flex justify-content-between">
       <div>
-        <a class="navbar-brand" href="#">
-          <img src="../../../assets/images/spotigames.svg" alt="">
-          
-        </a>
-        
+          <a href="#">
+            <img src="../../../assets/images/spotigames.svg" alt="SpotiGames Logo" style="width: 7rem;"/>
+          </a>
       </div>
       <div>
         <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          
-          <li class="nav-item">
-            <a class="nav-link active fa-solid fa-house" aria-current="page" routerLink="home"></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fa-solid fa-gamepad" routerLink="gameList"></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fa-solid fa-cart-shopping" routerLink="basketPage" *ngIf="userService.isLogged()"></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fa-solid fa-user" routerLink="login"*ngIf="!userService.isLogged()" ></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fa-solid fa-id-card" routerLink="userProfile"*ngIf="userService.isLogged()"></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fa-solid fa-truck" aria-current="page" routerLink="orderList" *ngIf="userService.esAdmin(this.token)"></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fa-solid fa-right-from-bracket" routerLink="home" *ngIf="userService.isLogged()" (click)="onClickLogout()"></a>
-          </li>
-        </ul>
-      </div>
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link active fa-solid fa-house"
+                routerLink="home"
+                id="home"
+              ></a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link fa-solid fa-gamepad"
+                routerLink="gameList"
+                id="gameList"
+              ></a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link fa-solid fa-cart-shopping"
+                routerLink="basketPage"
+                *ngIf="userService.isLogged()"
+                id="basketPage"
+              ></a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link fa-solid fa-user"
+                routerLink="login"
+                *ngIf="!userService.isLogged()"
+                id="login"
+              ></a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link fa-solid fa-id-card"
+                routerLink="userProfile"
+                *ngIf="userService.isLogged()"
+                id="userProfile"
+              ></a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link fa-solid fa-truck"
+                routerLink="orderList"
+                *ngIf="userService.esAdmin(this.token)"
+                id="orderList"
+              ></a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link fa-solid fa-right-from-bracket"
+                routerLink="home"
+                *ngIf="userService.isLogged()"
+                (click)="onClickLogout()"
+                id="logOut"
+              ></a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </nav>
 </div>
+<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+<script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>

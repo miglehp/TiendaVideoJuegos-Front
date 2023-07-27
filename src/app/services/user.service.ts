@@ -62,8 +62,12 @@ export class UserService {
 
   esAdmin(token: string): Boolean {
     if (this.isLogged()) {
-      let decodedToken = this.getDecodedAccessToken(token);
-      return Boolean(decodedToken.userRole);
+      if(this.getDecodedAccessToken(token)){
+        let decodedToken = this.getDecodedAccessToken(token);
+        return Boolean(decodedToken.userRole);
+      } else {
+        return false;
+      }
     } else {
       return false;
     }
