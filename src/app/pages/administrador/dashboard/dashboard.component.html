@@ -6,6 +6,7 @@
           <th>Número de pedido</th>
           <th>Fecha</th>
           <th>Estado</th>
+          <th></th>
         </tr>
       </thead>
   
@@ -16,6 +17,7 @@
           <td>
               {{ pedido.estado }}
           </td>
+          <td><button class="btn btn-outline-primary" [routerLink]="['/orderDetail/',pedido.id]">more details</button></td>
         </tr>
       </tbody>
     </table>
