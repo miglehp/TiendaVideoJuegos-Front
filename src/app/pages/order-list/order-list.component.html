@@ -5,7 +5,6 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">Fecha</th>
-          <th scope="col">Estado</th>
           <th scope="col">Actualizar Estado</th>
         </tr>
       </thead>
@@ -13,7 +12,6 @@
         <tr *ngFor="let pedido of ultimosPedidos">
           <th scope="row">{{ pedido.id }}</th>
           <td>{{ pedido.fecha | date : "dd/MM/yyyy" }}</td>
-          <td>{{ pedido.estado }}</td>
           <td>
             <div class="d-flex gap-5">
               <select class="form-select" (change)="onChange($event)">

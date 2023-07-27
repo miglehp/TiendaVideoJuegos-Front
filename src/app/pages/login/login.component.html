@@ -1,4 +1,8 @@
-<h2>Login user</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-12"></div>
+    <div class="col-md-4 col-12">
+      <h2>Login user</h2>
 <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
   <div class="mb-3">
     <label class="form-label">Email</label>
@@ -20,16 +24,22 @@
       Password must contain: caps, lower and number
     </p>
   </div>
+<div class="d-flex justify-content-between">
   <input
-    class="boton"
-    type="submit"
-    value="Enviar"
-    [disabled]="!formulario.valid"
-  />
-  <input
-    class="boton"
-    type="submit btn btn-success"
-    value="New user"
-    [routerLink]="['/createForm']"
-  />
+  class="btn btn-outline-primary"
+  type="submit"
+  value="Send"
+  [disabled]="!formulario.valid"
+/>
+<input
+  class="btn btn-outline-primary"
+  type="submit btn btn-success"
+  value="Register"
+  [routerLink]="['/createForm']"
+/>
+</div>
 </form>
+    </div>
+    <div class="col-md-4 col-12"></div>
+  </div>
+</div>
