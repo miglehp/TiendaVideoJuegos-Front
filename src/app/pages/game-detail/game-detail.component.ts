@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./game-detail.component.scss'],
 })
 export class GameDetailComponent {
+  router = inject(Router);
   private gamesService = inject(GameService);
   private basketService = inject(BasketService);
   private screenshotServ = inject(ScreenshotService);
@@ -22,7 +23,6 @@ export class GameDetailComponent {
 
   game: Game | undefined;
   screenshots: Screenshot[];
-  router = inject(Router);
 
   constructor() {
     this.screenshots = [];
