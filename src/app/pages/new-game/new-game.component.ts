@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GameService } from 'src/app/services/game.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-new-game',
@@ -39,19 +40,18 @@ export class NewGameComponent {
     const response = await this.gameService.create(this.formulario.value);
 
     if (response.fatal) {
-      // Error en la inserción
-      console.log(response.fatal);
-      return alert('Error en la inserción. Revisa');
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: response.fatal,
+      });
+    } else {
+      this.router.navigate(['/games']);
     }
-
-    // Inserción correcta
-    this.router.navigate(['/games']);
   }
+
   registrarJuego() {
     this.router.navigate(['/gameList']);
-  }
-  onClick() {
-    const response = this.gameService.registro(this.formulario.value);
   }
 
   checkError(field: string, error: string) {

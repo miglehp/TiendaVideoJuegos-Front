@@ -35,8 +35,7 @@ export class UpdateFormComponent {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(async (params) => {
-      const user = await this.userService.getById(params['userId']);
-      console.log(user);
+      await this.userService.getById(params['userId']);
     });
   }
 

@@ -14,7 +14,6 @@ export class OrdersByUserComponent {
   }
 
   async setPedidos() {
-    const pedidos = await this.orderService.obtenerUltimosPedidos();
-    console.log(pedidos);
+    await this.orderService.obtenerUltimosPedidos();
   }
 }

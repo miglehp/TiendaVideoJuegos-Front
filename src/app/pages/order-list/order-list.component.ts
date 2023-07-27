@@ -27,17 +27,15 @@ export class OrderListComponent {
     this.ultimosPedidos = (
       await this.orderService.obtenerUltimosPedidos()
     ).pedidos;
-    console.log(this.ultimosPedidos);
   }
   async actualizarEstado(pedido: any) {
-    const data = await this.orderService.actualizarEstadoPedido(
+    await this.orderService.actualizarEstadoPedido(
       pedido.id,
       this.nuevoEstado
     );
 
     pedido.estado = pedido.nuevoEstado;
-    pedido.nuevoEstado = ''; // Reiniciar el valor del nuevo estado
-    console.log(data);
+    pedido.nuevoEstado = '';
   }
 
   onChange($event: any) {

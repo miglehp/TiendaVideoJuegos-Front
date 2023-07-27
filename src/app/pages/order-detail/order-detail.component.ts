@@ -50,7 +50,6 @@ export class OrderDetailComponent {
     for (let game of this.order.games) {
       this.arrGames.push(await this.gameService.getById(game));
     }
-    console.log(this.arrGames);
   }
 
   precioAcumulado() {

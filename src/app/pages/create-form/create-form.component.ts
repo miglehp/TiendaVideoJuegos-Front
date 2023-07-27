@@ -40,8 +40,6 @@ export class CreateFormComponent {
 
   async onSubmit() {
     const response = await this.userService.create(this.formulario.value);
-    console.log(response);
-
     if (response.fatal) {
       Swal.fire({
         icon: 'error',
