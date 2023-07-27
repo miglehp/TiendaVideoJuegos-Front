@@ -35,6 +35,7 @@ export class HeaderComponent {
   }
 
   onClickLogout() {
+    localStorage.removeItem('basket');
     localStorage.removeItem('ecommerce_token');
     this.router.navigate(['/home']);
   }
