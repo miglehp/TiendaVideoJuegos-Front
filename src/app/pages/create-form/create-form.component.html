@@ -1,62 +1,65 @@
-<button class="btn btn-outline-primary mb-2" [routerLink]="['/login']">
-  Go back
-</button>
-
-<h2>New user</h2>
-<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
-  <div class="mb-3">
-    <label class="form-label">Username</label>
-    <input type="text" class="form-control" formControlName="username" />
-    <p class="error" *ngIf="checkError('username', 'required')">
-      El username es requerido
-    </p>
-    <p class="error" *ngIf="checkError('username', 'minlength')">
-      El username debe tener como mínimo 3 caracteres
-    </p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-12"></div>
+    <div class="col-md-4 col-12">
+      <h2>Register</h2>
+      <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label class="form-label">Username</label>
+          <input type="text" class="form-control" formControlName="username" />
+          <p class="error" *ngIf="checkError('username', 'required')">
+            El username es requerido
+          </p>
+          <p class="error" *ngIf="checkError('username', 'minlength')">
+            El username debe tener como mínimo 3 caracteres
+          </p>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            formControlName="password"
+          />
+          <p class="error" *ngIf="checkError('password', 'required')">
+            La password es requerido
+          </p>
+          <p class="error" *ngIf="checkError('password', 'pattern')">
+            La password debe contener: mayúsculas, minúsculas y números
+          </p>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input type="text" class="form-control" formControlName="email" />
+          <p class="error" *ngIf="checkError('email', 'required')">
+            El email es requerido
+          </p>
+          <p class="error" *ngIf="checkError('email', 'pattern')">
+            El email debe ser válido
+          </p>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Fecha de nacimiento</label>
+          <input
+            type="date"
+            class="form-control"
+            formControlName="fecha_nacimiento"
+          />
+          <p class="error" *ngIf="checkError('fecha_nacimiento', 'required')">
+            La fecha de nacimiento es requerida
+          </p>
+          <p class="error" *ngIf="checkError('dni', 'dnivalidator')">
+            La fecha de nacimiento es erronea
+          </p>
+        </div>
+        <input
+          class="btn btn-outline-primary"
+          type="submit"
+          value="Enviar"
+          [disabled]="!formulario.valid"
+        />
+      </form>
+    </div>
+    <div class="col-md-4 col-12"></div>
   </div>
-  <div class="mb-3">
-    <label class="form-label">Password</label>
-    <input type="password" class="form-control" formControlName="password" />
-    <p class="error" *ngIf="checkError('password', 'required')">
-      La password es requerido
-    </p>
-    <p class="error" *ngIf="checkError('password', 'pattern')">
-      La password debe contener: mayúsculas, minúsculas y números
-    </p>
-  </div>
-  <div class="mb-3">
-    <label class="form-label">Email</label>
-    <input type="text" class="form-control" formControlName="email" />
-    <p class="error" *ngIf="checkError('email', 'required')">
-      El email es requerido
-    </p>
-    <p class="error" *ngIf="checkError('email', 'pattern')">
-      El email debe ser válido
-    </p>
-  </div>
-  <div class="mb-3">
-    <label class="form-label">Fecha de nacimiento</label>
-    <input
-      type="date"
-      class="form-control"
-      formControlName="fecha_nacimiento"
-    />
-    <p class="error" *ngIf="checkError('fecha_nacimiento', 'required')">
-      La fecha de nacimiento es requerida
-    </p>
-    <p class="error" *ngIf="checkError('dni', 'dnivalidator')">
-      La fecha de nacimiento es erronea
-    </p>
-  </div>
-  <div class="mb-3">
-    <label class="form-label">Foto de perfil</label>
-    <input type="text" class="form-control" formControlName="foto_perfil" />
-  </div>
-
-  <input
-    class="boton"
-    type="submit"
-    value="Enviar"
-    [disabled]="!formulario.valid"
-  />
-</form>
+</div>
