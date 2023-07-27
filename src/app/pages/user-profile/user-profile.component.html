@@ -48,12 +48,19 @@
             />
           </div>
 
-          <button class="btn btn-outline-primary" (click)="onClickChangeEdit()" type="button">
+          <button
+            class="btn btn-outline-primary"
+            (click)="onClickChangeEdit()"
+            type="button"
+          >
             {{ editText | titlecase }}
           </button>
         </div>
       </form>
-      <button class="btn btn-outline-primary mb-2 mt-2" [routerLink]="['/dashboard']">
+      <button
+        class="btn btn-outline-primary mb-2 mt-2"
+        [routerLink]="['/dashboard']"
+      >
         Check orders
       </button>
     </div>
