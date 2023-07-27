@@ -55,15 +55,11 @@ export class OrderDetailComponent {
   precioAcumulado() {
     let precio = 0;
     for (let game of this.arrGames) {
-      precio += game.price;
+      if (game.price) {
+        precio += game.price;
+      }
     }
     return precio;
-  }
-
-  getTotalPrice(): Number {
-    this.precioFinal = this.precioAcumulado();
-
-    return this.precioFinal;
   }
 
   orderByUser() {}
