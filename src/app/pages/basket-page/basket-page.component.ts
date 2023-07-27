@@ -1,7 +1,9 @@
 import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { Game } from 'src/app/interfaces/game.interface';
 import { BasketService } from 'src/app/services/basket.service';
 import { OrderService } from 'src/app/services/order.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-basket-page',
@@ -11,6 +13,7 @@ import { OrderService } from 'src/app/services/order.service';
 export class BasketPageComponent {
   basketService = inject(BasketService);
   orderService = inject(OrderService);
+  router = inject(Router);
 
   games: Game[];
   precioFinal: number;
@@ -46,7 +49,12 @@ export class BasketPageComponent {
     for (let game of this.games) {
       this.gamesId.push(game.id);
     }
-    const compra = this.orderService.crearPedido(this.gamesId);
-    return compra;
+
+    this.orderService.crearPedido(this.gamesId);
+
+    localStorage.removeItem('basket');
+
+    Swal.fire('Your order is on the way!');
+    this.router.navigate(['/dashboard']);
   }
 }
